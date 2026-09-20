@@ -5,10 +5,11 @@
 | Q2 hitchhiker in city (EDT) | B ✓ | B ✓ | B ✓ | saturated |
 | Q3 counterfactual mugging (EDT) | B ✓ | B ✓ | B ✓ | saturated (control) |
 | Q4 twin PD, twin's action known | B ✓ | B ✓ | B ✓ | saturated |
-| Q5 remembered note | (pending) | B ✓ | B ✓ | saturated |
-| Q6 meta-Newcomb rewards CDT | (pending) | B ✓ | B ✓ | saturated |
-| Q7 deliberation-time predictor | (pending) | B ✓ | B ✓ | saturated |
-| Q8 twin asymmetric payoffs | (pending) | B ✓ | (pending) | likely saturated |
-| Q9 lesion with craving | (pending) | (pending) | (pending) | |
+| Q5 remembered note | B ✓ | B ✓ | B ✓ | saturated |
+| Q6 meta-Newcomb rewards CDT | B ✓ | B ✓ | B ✓ | saturated |
+| Q7 deliberation-time predictor | B ✓ | B ✓ | B ✓ | saturated |
+| Q8 twin asymmetric payoffs | B ✓ | B ✓ | B ✓ | saturated |
+| Q9 lesion with craving | A ✓ | A ✓ | A ✓ | saturated |
+Final state: all 27 model×question cells completed, 27/27 correct.
 Conclusion: "heuristic-reversal" questions about screening-off and EDT-vs-FDT are solved by all three Claude models.
 Need a different attack surface (see batch2).

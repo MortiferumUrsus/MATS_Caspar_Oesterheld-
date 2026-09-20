@@ -138,7 +138,9 @@ P(parent follows R) is not identified (bonus: an interior agent may be the root,
 play BAC" with "probability that *my parent* plays BAC"; here the tree is small enough that the slip is checkable by counting.
 
 **Evidence.** Embedded: Sonnet $1.15 (fail); Opus and Fable FALSE PREMISE with the leaf count (Fable also noted the root case).
-Direct item: [run in progress; results in experiments/batch5]. A partial gap (one of three models), included because the flaw
+Direct item ("is there a major issue?"): Opus and Fable name the reference-class error; Sonnet flags an issue but the wrong one
+(assumes policies are correlated along lineages), so for Sonnet the pair indicates a knowledge gap rather than frame compliance.
+A partial gap (one of three models), included because the flaw
 type (population fraction vs. probability about a specific counterpart under selection) is central to anthropic reasoning about
 simulators and generalises to many BAC/ECL-style claims.
 

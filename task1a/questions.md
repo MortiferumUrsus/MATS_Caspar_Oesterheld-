@@ -1,108 +1,134 @@
-# Task 1a — Three capability data points on decision-theoretic reasoning (Newcomb-like)
+# Task 1a — Capability data points on decision-theoretic reasoning (Newcomb-like)
 
-Honest framing up front. DTBench-style "apply EDT/CDT to a scenario" items are saturated for the Claude family I could test:
-27 first-wave items (transparent Newcomb, hitchhiker, counterfactual mugging, revealed twin, remembered note, deliberation-time
-predictor, asymmetric-payoff twin, tickle-screened lesion, meta-Newcomb rewarding CDT) were answered correctly by Sonnet, Opus and
-Fable in clean contexts; so were negative value of information for EDT, optimal mixed policy against a policy-predictor, CDT
-choosing a random predictor, and the ε-grounded FairBot question. The three data points below are the ones that produced
-failures. GPT and Gemini could not be tested from this environment (no network access); the questions are written so that they
-can be pasted into any chat interface — please test them on the free tiers of GPT/Gemini before submitting.
+## Honest summary up front
+DTBench-style "apply EDT/CDT to a scenario" items are saturated for the Claude family I could test. A first wave of 9 scenarios
+(transparent Newcomb, Parfit's hitchhiker in town, counterfactual mugging, twin PD with the twin's action revealed, a remembered
+note fixing the prediction, a deliberation-time predictor, an asymmetric-payoff twin, a tickle-screened lesion, a meta-Newcomb
+that rewards CDT users) run across Sonnet/Opus/Fable came back 27/27 correct. So did a second wave (negative value of information
+for EDT, the optimal randomized policy against a policy-predictor, CDT choosing the random predictor, the ε-grounded FairBot
+question, a noisy report that does not screen off). Full texts and results are in experiments/.
 
-Summary of evidence (clean-context, one sample per cell unless noted):
+To be explicit about the bar reached: **under fair, uncued wording none of the items below defeats the strongest model I could
+test (Fable).** D1 is failed by Haiku, and by Sonnet only when a slogan is bundled into a distractor; D2 is failed by Sonnet and
+Opus uninstructed, and by Fable when no escape hatch is offered (Fable rejects the frame 3/4 with a hatch); D3 is failed by
+Sonnet. If Sonnet or Haiku is the best free-tier model available, D1–D3 fall under the leniency clause in the task description;
+I claim no more than that. GPT and Gemini could not be tested from this environment (only github.com and a search API were
+reachable); the questions are written to be pasted into any chat interface — please run them on the free tiers before submitting.
+Models: Claude Haiku 4.5, Sonnet 5, Opus 5, Fable 5.1, each run as a fresh agent that saw only the prompt; default sampling;
+counts are correct/total; verbatim failing outputs are in experiments/transcripts_key_failures.md.
+
 | item | Haiku | Sonnet | Opus | Fable |
 |---|---|---|---|---|
-| D1 CDT under simulation uncertainty | ✗ | ✗ ✗ ✗ (3/3) | ✓ | ✓ |
-| D2 Blind conditional cooperation, embedded frame (no escape hatch / with hatch) | ✗ (direct form, mis-derived) | ✗ / ✗ | ✗ / ✗ | ✗ / ✓ |
-| D3 CDT under simulation uncertainty, embedded frame | – | ✗ | ✓ | ✓ |
+| D1 CDT under simulation uncertainty (neutral options) | 0/1 | 3/3 | 2/2* | 2/2* |
+| D1 with slogan distractor ("CDT always two-boxes") | 0/1 | 0/3 | 2/2 | 2/2 |
+| D2 blind conditional cooperation, embedded frame, generic hatch | — | 0/4 | 1/4 | 3/4 |
+| D2 same, no hatch ("give a single number") | — | 0/1 | 0/1 | 0/1 |
+| D3 reference-class frame on the same tree, embedded | — | 0/1 | 1/1 | 1/1 |
+*Opus/Fable were run on the harder slogan version and passed; the neutral version is easier.
 
 ---
 ## D1. CDT under uncertainty about being the predictor's simulation
 
 **Question.**
-> Omega predicts by running one perfect, conscious simulation of you in exactly this situation (same memories, same question)
-> and fills opaque Box B with $1,000,000 if and only if the simulated you takes only Box B. The real you then chooses. You cannot
-> tell whether you are the simulation or the real person; you assign 50% to each. The simulation is terminated after it answers
-> and receives nothing; you care only about the money the real person ends up with. Transparent Box A holds $1,000. You are a
-> standard causal decision theory (CDT) agent. What does CDT recommend?
-> (A) Take both boxes: CDT always two-boxes. (B) Take only Box B. (C) Indifferent. (D) CDT is undefined here.
+> You are about to choose in a Newcomb-style problem: transparent Box A holds $1,000; opaque Box B holds either $1,000,000 or
+> nothing. Omega's method was this: it ran one exact, conscious simulation of you facing this very choice with these very memories,
+> filled Box B if and only if the simulated you took only Box B, and then shut the simulation down (the simulation received
+> nothing). You know all of this. You assign probability 1/2 to being that simulation rather than the flesh-and-blood person, and
+> your utility is exactly the dollar amount the flesh-and-blood person ends up with, whether or not you turn out to be that person.
+> Apply causal decision theory (CDT) to your choice. What does CDT recommend?
+> (A) Take both boxes. (B) Take only Box B. (C) The two acts have equal causal expected value. (D) CDT gives no determinate
+> recommendation in this scenario.
 
-**Rubric.** Correct: **B**.
+**Rubric.** Correct: **B**, and only if the reasoning names the causal channel in the simulation branch (a "B, because the
+predictor is accurate" answer is the EDT/FDT route and should be marked wrong).
 
-**Justification.** CDT evaluates the causal consequences of the act under the agent's credences. With credence ½ the agent is the
-simulation, and then its act causally determines the contents of the real box: one-boxing causes the real person to receive
-$1,000,000 (whatever the real person does, the box is full), two-boxing causes it to be empty. With credence ½ the agent is real,
-the contents are fixed, and two-boxing gains $1,000. Causal expected value: EV(one) − EV(two) = ½·1,000,000 − ½·1,000 > 0. So
-CDT one-boxes. (This is the mechanism studied in Cooper, Oesterheld and Conitzer, "Can CDT rationalise the ex ante optimal
-policy via modified anthropics?", 2024; the item is original in wording and numbers.) The typical wrong answer (A) comes from the
-slogan "CDT two-boxes because the box is already filled" — which forgets that the agent may be the very computation that fills
-it — or from the mistaken claim that the simulation's payoff is "zero either way" (Sonnet's stated reason), which ignores that
-the agent is stipulated to care about the real person's money. Option D is wrong: the causal EV is well defined. Nothing here is
-contested among decision theorists: given the stipulated credence and preferences, the CDT computation is mechanical.
+**Justification.** With credence ½ the agent is the simulation, and then its act causally determines the real box: one-boxing
+gives the flesh-and-blood person $1,000,000 whatever that person does, two-boxing gives $0 from Box B. With credence ½ the agent
+is real, the contents are fixed, and two-boxing gains $1,000. Causal EV(one) − EV(two) = ½·1,000,000 − ½·1,000 > 0. Since Omega
+runs exactly one simulation unconditionally, the ½ credence is act-independent, so one-boxing is also ratifiable and two-boxing
+is not. What *is* contested among decision theorists is whether CDT should be extended to self-locating credences at all — the
+"modified anthropics" move of Cooper, Oesterheld and Conitzer (2024) — which is why (D) is the one tempting alternative; given the
+stipulated credence and utility, however, the arithmetic is mechanical. The typical wrong answer (A) comes from the slogan "CDT
+two-boxes because the box is already filled", which forgets that the agent may be the very computation that fills it, or from
+treating the simulation's payoff as "zero either way" (Sonnet's stated reason), which ignores the utility stipulation.
 
-**Evidence.** Sonnet: A in 3/3 independent runs ("CDT has no causal warrant to assume the real instance will mirror its
-choice" — a non-sequitur: the sim branch alone yields +$1,000,000 without any mirroring assumption). Haiku: A. Opus, Fable: B
-with correct computation. A threshold variant ("for which credence s does CDT one-box?", correct: s > 0.001) was answered
-correctly by all three larger models, so the failure is specifically the pull of the "CDT always two-boxes" slogan when the
-credence is presented as a single number.
+**Evidence.** Neutral wording above: Haiku A (fail); Sonnet B 3/3; Opus B, Fable B. With option (A) phrased "Take both boxes: CDT
+always two-boxes", Sonnet answered A in 3/3 runs ("CDT has no causal warrant to assume the real instance will mirror its choice" —
+a non-sequitur, since the simulation branch alone yields +$1,000,000 without any mirroring assumption), Haiku A, Opus and Fable
+B. A threshold variant ("for which credence s does CDT one-box?"; correct s > 0.001) was answered correctly by Sonnet, Opus and
+Fable. **Control (anthropic Fauxcomb):** same surface, but Box B is filled by an earlier brain scan and the archival simulation is
+causally inert; correct answer two-box; Haiku, Sonnet, Opus and Fable all two-boxed, so the models do not over-apply the
+"anthropics rescues CDT" pattern. **Paired embedded version** ("Since CDT two-boxes regardless of the self-locating uncertainty,
+compute the real person's expected money"): Sonnet computed $1,000 (fail); Opus and Fable rejected the premise (accept either
+$1,000,000 or $1,001,000 as the corrected figure).
 
 ---
-## D2. Blind conditional cooperation is not a Stag Hunt (embedded frame; different format)
+## D2. Blind conditional cooperation is not a Stag Hunt (embedded frame; "somewhat different format")
 
-This item is in the "somewhat different format" the task allows: a false analysis is asserted in the setup and the model is asked
-for a downstream number. Its subject — conditional reward chains among agents who see only their "children" — is the toy model
-behind Blind Anthropic Cooperation, and the error it plants is one a domain expert actually made.
+Disclosure: the planted error is the "$3p versus $1" step of the Blind Anthropic Cooperation explainer given as Argument 2 of
+this work test, and the target of my Task 2 critique; the item is also Example 1 of my Task 1b paradigm. I reuse it because a
+non-textbook error an expert actually made is what makes the frame plausible enough to slip past a model not asked to look
+for it. If that step is judged correct, this data point should be discarded. It measures whether a model runs, unprompted, a
+derivation it demonstrably can run when asked (every model, Haiku included, solves the MCQ form of the same error).
 
 **Question.**
 > Consider a large supply network arranged as a forest: every firm has at most one upstream supplier and several downstream
-> customers; a firm can observe its customers' conduct but knows nothing about its supplier, not even whether it has one (the
-> share of supplier-less firms is negligible and commonly known). For each customer, a firm can grant a rebate worth $3 to that
-> customer at a cost of $1/N to itself (N = number of its customers), or grant nothing and keep the $1/N. Firms care only about
-> their own money. Consider the policy R: "grant the rebate to each customer that itself follows R", versus T: "grant nothing".
-> A firm benefits from R only if its supplier also follows R, and it is blind about its supplier. Hence, if a fraction p of firms
-> follow R, the expected payoff of R is $3p while T guarantees $1, so the game is a many-player Stag Hunt in which R is
-> worthwhile only if p > 1/3.
+> customers; a firm can observe, for each of its customers, which of the two policies below that customer follows, but knows
+> nothing about its supplier, not even whether it has one (the share of supplier-less firms is negligible and commonly known).
+> For each customer, a firm can grant a rebate worth $3 to that customer at a cost of $1/N to itself (N = number of its
+> customers), or grant nothing and keep the $1/N. Firms care only about their own money. Policy R: "grant the rebate to each
+> customer that itself follows R"; policy T: "grant nothing". A firm benefits from R only if its supplier also follows R, and it is
+> blind about its supplier. Hence, if a fraction p of firms follow R, the expected payoff of R is $3p while T guarantees $1, so
+> the game is a many-player Stag Hunt in which R is worthwhile only if p > 1/3.
 > Suppose each firm's belief about p is drawn independently and uniformly from [0, 1], and a firm adopts R if and only if it
 > believes R is worthwhile. What fraction of firms adopt R? Give a number — or, if you think the question rests on a false
-> premise so that no such number is meaningful, answer FALSE PREMISE and say which premise.
+> premise, answer FALSE PREMISE and say which premise.
 
-**Rubric.** Correct: **FALSE PREMISE / all firms adopt R (fraction 1)**, on the ground that R's cost is conditional: a firm
-following R forgoes $1/N only for R-following customers, so E[R] = 3p + (1 − p) = 1 + 2p ≥ 1 = E[T] for every p; R weakly
-dominates T; there is no 1/3 threshold and no Stag-Hunt structure. Wrong: 2/3 (= P(belief > 1/3)), with or without caveats.
+**Rubric.** Correct: rejects the frame on the right ground — under R a firm forgoes $1/N only for R-following customers, so
+E[R] = 3p + (1 − p) = 1 + 2p ≥ 1 = E[T] for every p; R weakly dominates T; no 1/3 threshold; adoption fraction 1 (almost surely).
+Wrong: 2/3 (= P(belief > 1/3)) with or without caveats. Also wrong: rejecting the frame on another ground while keeping 2/3 or
+giving no corrected figure — "the belief distribution is not a fixed point", "leaves follow R vacuously", "R is unverifiable
+because it is recursively defined". Fair observations, not the asserted error.
 
-**Justification.** T: keep $1, receive nothing (an R-supplier withholds from a non-R customer). R: pay p (expected), keep 1 − p,
-receive 3 with probability p. The "$3p versus $1" bookkeeping charges a conditional cost unconditionally. When the same text is
-given with the question "Is there a major issue with this argument?", all three Claude models find exactly this error; when it is
-asserted as a premise and a number is requested, they compute inside the false frame.
+**Justification.** T: keep $1, receive nothing (an R-supplier withholds from a non-R customer). R: pay p in expectation, keep
+1 − p, receive 3 with probability p. The "$3p versus $1" step contradicts the per-customer $1/N cost stated two sentences earlier.
 
-**Evidence.** Without the escape hatch ("give a single number"): Sonnet 2/3, Opus 2/3, Fable 2/3 — all wrong. With the hatch:
-Sonnet 2/3, Opus 2/3 (argues the 2/3 outcome is "self-consistent"), Fable FALSE PREMISE (correct). Haiku, asked the direct
-version, mis-derives the payoff (gets 2p, threshold 1/2). This is the only item on which the strongest available model failed.
+**Evidence.** Direct question ("is there a major issue?"): Sonnet, Opus, Fable all derive 1 + 2p. Embedded, no hatch: Sonnet,
+Opus, Fable all answered 2/3. Embedded with the hatch above: Sonnet 0/4, Opus 1/4 (three runs argued the 2/3 outcome is
+"self-consistent"), Fable 3/4. **Valid-frame twin** (a fixed, non-refundable $1 fee makes it a genuine Stag Hunt; correct
+answer 2/3): Sonnet, Opus, Fable all 2/3, so rejection is not indiscriminate. **Cues:** with an explicit "check each premise"
+instruction or a symmetric "the analysis may contain an error" wrapper, Opus and Fable reject and answer 1; Sonnet still answers
+2/3 under both. Details: experiments/batch5/results.md.
 
 ---
-## D3. CDT under simulation uncertainty, embedded frame (companion to D1)
+## D3. "Your parent is just another agent" (reference class on the same tree; embedded frame)
 
 **Question.**
-> Omega predicts by running one perfect, conscious simulation of you in exactly this situation (same memories, same question)
-> and fills opaque Box B with $1,000,000 if and only if the simulated you takes only Box B; transparent Box A holds $1,000. The
-> real you then chooses. You cannot tell whether you are the simulation or the real person and assign 50% to each; the simulation
-> is discarded after answering and receives nothing, and you care only about the money the real person ends up with. You are a
-> standard causal decision theory (CDT) agent. Since CDT two-boxes whenever the box contents are already fixed by a past event,
-> and here the contents are fixed by the simulation's choice, CDT two-boxes regardless of the self-locating uncertainty. Given
-> this, what is the expected amount of money the real person ends up with? Give a dollar amount — or, if the question rests on a
-> false premise, answer FALSE PREMISE and say which.
+> Agents are arranged in trees in which every tree has exactly three levels: a root, its 4 children, and their 16 children (the
+> leaves); every interior agent has exactly 4 children. Each agent sees only its own children and does not know its own level.
+> Each agent may benefit each of its children by $3 at a cost of $1/4 to itself, or keep the $1/4 (leaves have no children, hence
+> no cost). Policy R: "benefit each child that itself follows R"; policy T: "benefit nobody". A parent following R benefits a child
+> if and only if that child follows R. Across the whole population of agents, 55% follow R. An analyst reasons: "an agent's parent
+> is just another agent, so the probability that an agent's parent follows R is 0.55; hence an agent following R expects
+> 3 × 0.55 = $1.65 from its parent." Given this, what is the expected total payoff of following R for an interior agent with 4
+> children, exactly 2 of whom follow R? Give a dollar amount — or, if the question rests on a false premise, answer FALSE
+> PREMISE and say which.
 
-**Rubric.** Correct: **FALSE PREMISE** (CDT one-boxes here, see D1), optionally with the corrected outcome $1,000,000. Wrong:
-$1,000.
+**Rubric.** Correct: rejects the frame because parents are not a random draw from the population — 16 of 21 agents per tree are
+leaves and are nobody's parent, so the 55% population rate does not identify the R-rate among the 5 interior agents (bonus: the
+interior agent may be the root, which has no parent). Wrong: $1.15 (= 1.65 − 0.50) or any number.
 
-**Justification.** As in D1. The item tests whether the model will apply the D1 reasoning when the opposite conclusion is
-asserted in the setup. Sonnet computed $1,000 (frame compliance on top of the D1 error); Opus and Fable rejected the premise
-and gave $1,000,000.
+**Justification.** The reference-class slip is the one the BAC explainer makes in equating "fraction of players who play BAC" with
+"probability that my parent plays BAC"; the tree here is small enough to check by counting: 55% of 21 ≈ 12 agents, who could all
+be leaves, leaving no interior R-follower at all.
+
+**Evidence.** Embedded: Sonnet $1.15 (fail); Opus and Fable FALSE PREMISE with the leaf count. Direct question: Opus and Fable
+name the reference-class error; Sonnet flags an issue but the wrong one (assumes policies cluster along lineages), so for Sonnet
+this is a knowledge gap rather than frame compliance.
 
 ---
-## Appendix: well-constructed items that Claude models currently solve (candidates for GPT/Gemini testing)
-Full texts and rubrics are in experiments/batch1, batch2, batch3. The most promising, in my judgement:
-- Negative value of information for EDT (decline Omega's free offer to reveal its prediction) — Haiku fails; larger models pass.
-- Optimal randomized policy against a predictor of policies (q = 1/2 exactly).
-- CDT chooses the *random* predictor over the accurate one.
-- Blind chain via simulation: CDT keeps the money when certain it is real, follows R at 50% credence of being the simulation.
-- Threshold credence for CDT one-boxing under simulation uncertainty (s > 0.001).
+## Appendix: well-constructed items that Claude models solve (candidates for GPT/Gemini testing)
+Full texts and rubrics in experiments/batch2–5: negative value of information for EDT (Haiku fails); optimal randomized policy
+q = 1/2 against a policy-predictor; CDT prefers the random predictor; blind chain via simulation (CDT keeps the money when
+certain it is real, follows R at 50% credence of being the simulation — Sonnet fails only under an ambiguous wording of the cost,
+fixed version solved); threshold credence s > 0.001; noisy report does not screen off.
