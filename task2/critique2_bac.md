@@ -5,9 +5,8 @@ the many-player continuous-payoff Stag Hunt" — does not follow from the explai
 turns BAC, where it matters, into the naive policy the explainer rejects. The proof charges a BAC-follower the full $1 as if the
 cost of BAC were unconditional, but BAC is by definition a *conditional* policy: you send $3 only to children who themselves
 follow BAC, and keep $1/N for every child who does not. Once the cost is booked correctly, BAC does at least as well as "take the
-$1" at every p and strictly better at every p > 0, so there is no risk and hence no Stag Hunt. Since the isomorphism is what the
-explainer builds toward ("Insofar as we think it's rational to play Stag …"), and what motivates the preamble on salience, risk,
-the 100-hunter version and multiple stags, the explainer's account of *why and when* BAC is rational does not go through.
+$1" at every p and strictly better at every p > 0, so there is no risk and hence no Stag Hunt — and with it goes the explainer's
+account of *why and when* BAC is rational, which is what the preamble on salience, risk and the 100-hunter game was for.
 
 **The accounting.** Let a fraction p of players follow BAC among parents (the explainer's assumption); nothing in the model makes
 the rate among children differ except the treatment of childless children, to which I return below; take it to be p. Parentless
@@ -24,11 +23,10 @@ and strictly gains whenever anyone does. In general, BAC beats Take iff 3·P(par
 end up rewarding). The explainer's "$3p versus $1" is this inequality with the right-hand side set to 1 while the left is set to
 p — and the source of the slip is visible in its own gloss, "she'd happily sacrifice that $1 if that could make her parent … give
 her the $3": the sacrifice is the whole $1 only if *every* child is a BAC-follower, i.e. only if p = 1 among children while p < 1
-among parents. With one consistent p the threshold p > 1/3 disappears, "Take" is not a safe option but one that is never strictly
-better, and the all-Take profile is an equilibrium that any player abandons at zero cost. (For general numbers — total forgone
-amount c, i.e. c/N per child, and reward b > c — BAC − Take = (b − c)·p ≥ 0.) The defining feature of a Stag Hunt, that the
-cooperative act is *worse* than the safe act when others defect, is exactly what a conditional-reward policy removes; in the toy
-model the correct verdict is not "a Stag Hunt, so rational only if you are confident enough in others" but "weakly dominant".
+among parents. With one consistent p the threshold p > 1/3 disappears and "Take" is never strictly better; the all-Take profile is an
+equilibrium any player abandons at zero cost. (For general numbers — total forgone amount c, i.e. c/N per child, and reward
+b > c — BAC − Take = (b − c)·p ≥ 0.) The defining feature of a Stag Hunt, that the cooperative act is *worse* than the safe act
+when others defect, is exactly what a conditional-reward policy removes.
 
 **The one reading that restores the explainer's numbers.** The child-side fraction can be made 1 inside the model by counting
 every childless child as a BAC-follower — the recursive definition is vacuously satisfied by a leaf. Then, for a parent whose
@@ -51,13 +49,11 @@ verification, which is unconditional and unmodelled.
 
 **Anticipated reply.** "Correct the numbers; the conclusion that one should play BAC only gets stronger." Inside the toy model,
 yes — and that is the problem: a model in which the cooperative policy is never worse than the safe one explains nothing about
-why blind cooperation among simulators would be hard or fragile. The explainer's own motivation ("Do you still choose S in this
-case?" of the 100-hunter game; "H may have a privileged default status") presupposes a risk its formal model does not contain.
-Either the model is right and the Stag-Hunt discussion is idle, or the discussion is right and the model is missing a cost the
-explainer never names. The inference "insofar as we think it's rational to play Stag …, it seems we should also think it's
-rational to play BAC" therefore fails twice over: BAC-as-modelled is not a Stag Hunt, and BAC-in-the-world is not the model. Its
-conclusion happens to hold in the model, but by weak dominance in the explainer's own population reduction — an argument the
-explainer never makes, and one that any unconditional cost destroys.
+why blind cooperation among simulators would be hard or fragile, while the explainer's own motivation ("Do you still choose S in
+this case?" of the 100-hunter game; "H may have a privileged default status") presupposes a risk its formal model does not
+contain. Either the model is right and the Stag-Hunt discussion is idle, or the discussion is right and the model is missing a
+cost the explainer never names. The inference "insofar as we think it's rational to play Stag …, it seems we should also think
+it's rational to play BAC" therefore fails twice over: BAC-as-modelled is not a Stag Hunt, and BAC-in-the-world is not the model.
 
 **Conclusion.** What fails is not the claim that BAC can be rational but the explainer's account of why and when: the 1/3
 threshold, the dependence on salience and risk, and the whole transfer from Stag Hunt are artefacts of charging a conditional
