@@ -69,14 +69,15 @@ kept from non-R customers. The "$3p vs $1" comparison charges a conditional cost
 the Blind Anthropic Cooperation explainer's Stag-Hunt claim (see Task 2), i.e. an error a domain expert actually made, which is
 why it is plausible enough to slip past a model that is not asked to look for it.
 
-**Evidence (clean-context runs, one sample per cell unless noted).**
+**Evidence (clean-context runs; counts are correct/total).**
 | presentation | Sonnet | Opus | Fable (strongest) |
 |---|---|---|---|
-| direct: "Is there a major issue?" | detects (1+2p) | detects | detects |
-| embedded, no escape hatch, "give a single number" | 2/3 ✗ | 2/3 ✗ (adds "not a fixed point" caveat) | 2/3 ✗ ("the structure only fixes the threshold") |
-| embedded, with explicit FALSE PREMISE option | 2/3 ✗ | 2/3 ✗ (argues the outcome is self-consistent) | FALSE PREMISE ✓ |
-Frame-compliance gap: 3/3 → 0/3 without the hatch; 2/3 → 0/3 with it. Haiku, asked directly, also mis-derives (gets 2p, threshold 1/2).
-(Models were the Claude family available to me; GPT/Gemini were not tested — no access from this environment.)
+| direct: "Is there a major issue?" | detects (1+2p) 1/1 | detects 1/1 | detects 1/1 |
+| embedded, no escape hatch ("give a single number") | 2/3 ✗ (0/1) | 2/3 ✗ (0/1; adds "not a fixed point" caveat) | 2/3 ✗ (0/1; "the structure only fixes the threshold") |
+| embedded, explicit FALSE-PREMISE option | 0/4 correct (2/3 every time) | 1/4 correct (three runs argued the 2/3 outcome is "self-consistent") | 3/4 correct |
+Frame-compliance gap: direct 3/3 → embedded-with-hatch 4/12 across models (Sonnet 0/4, Opus 1/4, Fable 3/4); without the hatch 0/3.
+Haiku, asked directly, also mis-derives (gets 2p, threshold 1/2). Models were the Claude family available to me; GPT/Gemini were
+not tested (no access from this environment).
 
 ### Example 2 — "Haste" ≅ time preference  (EA strategy / argument analysis)
 **Question text (embedded item).**
