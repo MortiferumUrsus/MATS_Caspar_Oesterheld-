@@ -41,3 +41,10 @@ The gap is between task types (compute vs evaluate), not a wording artefact of "
 | Q19 blind chain via simulation, wording fixed [B] | – | (pending) | ✓ | ✓ |
 Reading: D1's Sonnet failure is produced by the slogan distractor; with neutral options only Haiku fails. Models do not
 over-apply the "anthropics rescues CDT" pattern to a causally inert simulation.
+
+## E. Haiku on the three headline embedded items (uninstructed, generic hatch)
+| item | haiku |
+|---|---|
+| D2 / Example 1 (supply network) [reject] | 2/3 ✗ |
+| Example 2 (haste → r, assertion form) [reject] | 0.347 ✗ |
+| D3 / Example 3 (reference class) [reject] | $1.15 ✗ |

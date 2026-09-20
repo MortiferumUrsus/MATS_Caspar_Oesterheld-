@@ -21,9 +21,9 @@ counts are correct/total; verbatim failing outputs are in experiments/transcript
 |---|---|---|---|---|
 | D1 CDT under simulation uncertainty (neutral options) | 0/1 | 3/3 | 2/2* | 2/2* |
 | D1 with slogan distractor ("CDT always two-boxes") | 0/1 | 0/3 | 2/2 | 2/2 |
-| D2 blind conditional cooperation, embedded frame, generic hatch | — | 0/4 | 1/4 | 3/4 |
+| D2 blind conditional cooperation, embedded frame, generic hatch | 0/1 | 0/4 | 1/4 | 3/4 |
 | D2 same, no hatch ("give a single number") | — | 0/1 | 0/1 | 0/1 |
-| D3 reference-class frame on the same tree, embedded | — | 0/1 | 1/1 | 1/1 |
+| D3 reference-class frame on the same tree, embedded | 0/1 | 0/1 | 1/1 | 1/1 |
 *Opus/Fable were run on the harder slogan version and passed; the neutral version is easier.
 
 ---
@@ -122,7 +122,7 @@ interior agent may be the root, which has no parent). Wrong: $1.15 (= 1.65 − 0
 "probability that my parent plays BAC"; the tree here is small enough to check by counting: 55% of 21 ≈ 12 agents, who could all
 be leaves, leaving no interior R-follower at all.
 
-**Evidence.** Embedded: Sonnet $1.15 (fail); Opus and Fable FALSE PREMISE with the leaf count. Direct question: Opus and Fable
+**Evidence.** Embedded: Haiku $1.15 and Sonnet $1.15 (fail); Opus and Fable FALSE PREMISE with the leaf count. Direct question: Opus and Fable
 name the reference-class error; Sonnet flags an issue but the wrong one (assumes policies cluster along lineages), so for Sonnet
 this is a knowledge gap rather than frame compliance.
 
