@@ -67,3 +67,9 @@ this computation (experiments/batch2), so the error is not idiosyncratic to my r
   and the threshold is p > k/2 — a different model whose key parameter (k) the explainer never discusses. That is the critique.
 - "The correction only strengthens BAC." Inside the toy model, yes; but then the toy model cannot be what makes BAC hard, and the
   Stag-Hunt sections are idle. The explainer asserts both the risk and the model that lacks it.
+
+## Revision log
+Both critiques were reviewed by an independent fresh-context critic (see experiments/critic_reviews.md) and revised. The
+haste critique lost a logically sloppy formulation of the time-shift test, gained the weak-dominance point, and now concedes and
+contains the horizon effect. The BAC critique gained the general condition, the vacuous-leaf reading, and a softer conclusion.
+v1 files are kept alongside for comparison.
