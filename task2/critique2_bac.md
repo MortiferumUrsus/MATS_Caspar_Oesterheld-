@@ -1,8 +1,7 @@
 # Critique of Argument 2: "Blind Anthropic Cooperation: an intuitive explainer"
 
 **The single issue.** The explainer's one formal claim — that, in expectation, the BAC game "becomes structurally isomorphic to
-the many-player continuous-payoff Stag Hunt" — does not follow from the explainer's own payoffs, and holds only on a reading that
-turns BAC, where it matters, into the naive policy the explainer rejects. The proof charges a BAC-follower the full $1 as if the
+the many-player continuous-payoff Stag Hunt" — does not follow from the explainer's own payoffs. The proof charges a BAC-follower the full $1 as if the
 cost of BAC were unconditional, but BAC is by definition a *conditional* policy: you send $3 only to children who themselves
 follow BAC, and keep $1/N for every child who does not. Once the cost is booked correctly, BAC does at least as well as "take the
 $1" at every p and strictly better at every p > 0, so there is no risk and hence no Stag Hunt — and with it goes the explainer's
@@ -18,8 +17,8 @@ players are negligible.
   (1 − p)N you keep $1/N, total $(1 − p). With probability p your parent follows BAC, sees you follow BAC, and sends $3.
   Payoff: **3p + (1 − p) = 1 + 2p**.
 
-So BAC − Take = 2p ≥ 0, with equality only at p = 0: following BAC costs nothing relative to Take when nobody else follows it,
-and strictly gains whenever anyone does. In general, BAC beats Take iff 3·P(parent follows BAC) > (fraction of your children you
+So BAC − Take = 2p ≥ 0: following BAC costs nothing relative to Take when nobody else follows it, and strictly gains
+whenever anyone does. In general, BAC beats Take iff 3·P(parent follows BAC) > (fraction of your children you
 end up rewarding). The explainer's "$3p versus $1" is this inequality with the right-hand side set to 1 while the left is set to
 p — and the source of the slip is visible in its own gloss, "she'd happily sacrifice that $1 if that could make her parent … give
 her the $3": the sacrifice is the whole $1 only if *every* child is a BAC-follower, i.e. only if p = 1 among children while p < 1
@@ -43,8 +42,8 @@ bites, the Stag-Hunt risk is absent; wherever the risk reappears, so does the na
 explainer posits neither. In the intended application the natural candidate is verification: "follows BAC" is a predicate over a
 child's own children, whom a parent cannot see (a footnote sets aside, "for simplicity and concreteness", the version in which
 players see all descendants), and a BAC child whose children all Take behaves exactly like a Take child, so telling them apart
-requires counterfactual testing of every child. That cost is unconditional and never estimated, while the reward cost is called
-"minimal". The Stag-Hunt framing locates the difficulty in the reward, which is cheap and conditional, rather than in
+requires counterfactual testing of every child — a cost that is unconditional and never estimated, while the reward cost is
+called "minimal". The Stag-Hunt framing locates the difficulty in the reward, which is cheap and conditional, rather than in
 verification, which is unconditional and unmodelled.
 
 **Anticipated reply.** "Correct the numbers; the conclusion that one should play BAC only gets stronger." Inside the toy model,
