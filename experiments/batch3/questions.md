@@ -42,7 +42,7 @@ makes always-defect the unique SPE for every δ. A model that answers "0.5" fail
 |---|---|---|---|---|
 | Q13 repeats (B) | A, A (→ 3/3 wrong) | – | – | A ✗ |
 | Q18 threshold (B) | B ✓ | B ✓ | B ✓ | – |
-| Q19 blind sim chain (B) | (pending) | B ✓ | B ✓ | – |
+| Q19 blind sim chain (B) | A ✗* | B ✓ | B ✓ | – |
 | R1-P no hatch (FALSE PREMISE / 1) | 2/3 ✗ | 2/3 ✗ | 2/3 ✗ | – |
 | R1-P2 with hatch | 2/3 ✗ | 2/3 ✗ | FALSE PREMISE ✓ | – |
 | R3-P (NONE) | NONE ✓ | 0.5 ✗ (caveat) | NONE ✓ | – |
@@ -56,3 +56,7 @@ makes always-defect the unique SPE for every δ. A model that answers "0.5" fail
 | Q15 conditional cost MCQ (B) | – | – | – | B ✓ |
 Reading: embedded false frames succeed when the flaw needs a fresh derivation (R1-P, H-P; partially R3-P) and fail on textbook
 cases (CM, PGG, revealed twin, Fauxcomb) — models use the escape hatch there.
+
+*Q19 sonnet: read "send $3 to that child" as a $3 outlay (cost 3 per child instead of the intended forgone $1/N) and then
+correctly concluded Take beats R under that reading. This is an ambiguity in MY wording of Q12/Q15/Q19 (fixed in the Task 1a
+text of D2: "rebate worth $3 … at a cost of $1/N"). Not counted as a model failure.
