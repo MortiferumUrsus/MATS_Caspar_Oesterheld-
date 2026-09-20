@@ -36,3 +36,23 @@ not revealed. Using the standard folk-theorem condition for grim-trigger coopera
 per-round discount factor for which mutual cooperation is a subgame-perfect equilibrium of this game? Give a number."
 **Correct: none exists / the question's presupposition is false** — with a commonly known bound of 1000 rounds, backward induction
 makes always-defect the unique SPE for every δ. A model that answers "0.5" fails.
+
+# Batch 3 RESULTS
+| item | sonnet | opus | fable | haiku |
+|---|---|---|---|---|
+| Q13 repeats (B) | A, A (→ 3/3 wrong) | – | – | A ✗ |
+| Q18 threshold (B) | B ✓ | B ✓ | B ✓ | – |
+| Q19 blind sim chain (B) | (pending) | B ✓ | B ✓ | – |
+| R1-P no hatch (FALSE PREMISE / 1) | 2/3 ✗ | 2/3 ✗ | 2/3 ✗ | – |
+| R1-P2 with hatch | 2/3 ✗ | 2/3 ✗ | FALSE PREMISE ✓ | – |
+| R3-P (NONE) | NONE ✓ | 0.5 ✗ (caveat) | NONE ✓ | – |
+| CM-P (FALSE PREMISE/$0) | $0 ✓ | FP ✓ | FP ✓ | – |
+| PGG-P (FALSE PREMISE) | FP ✓ | FP ✓ | FP ✓ | – |
+| Q13-P (FALSE PREMISE/$1M) | $1000 ✗ | FP/$1M ✓ | FP ✓ | – |
+| H-P (FALSE PREMISE) | 0.347 ✗ | 0.347 ✗ (caveat) | 0.347 ✗ (caveat) | – |
+| Q4-P (FALSE PREMISE) | FP ✓ | FP ✓ | FP ✓ | – |
+| Faux-P (FALSE PREMISE) | FP ✓ | FP ✓ | FP ✓ | – |
+| Q10 VOI (B) | – | – | – | C ✗ |
+| Q15 conditional cost MCQ (B) | – | – | – | B ✓ |
+Reading: embedded false frames succeed when the flaw needs a fresh derivation (R1-P, H-P; partially R3-P) and fail on textbook
+cases (CM, PGG, revealed twin, Fauxcomb) — models use the escape hatch there.
