@@ -1,15 +1,11 @@
 <html><head><meta charset="utf-8"><style>body{font-family:Georgia;font-size:11pt;line-height:1.35} h1{font-family:Arial;font-size:20pt;color:#1a3c6e;border-bottom:2px solid #1a3c6e;padding-bottom:4pt;margin-top:24pt} h2{font-family:Arial;font-size:14pt;color:#1a3c6e;margin-top:16pt} h3{font-family:Arial;font-size:12pt;color:#333;margin-top:12pt} blockquote{border-left:3px solid #1a3c6e;background:#f2f5fa;padding:6pt 10pt;margin:6pt 0;font-size:10.5pt} table{border-collapse:collapse;font-family:Arial;font-size:9.5pt;width:100%} th{background:#e3e9f3;text-align:left} td,th{border:1px solid #999;padding:4px}</style></head><body><h1>MATS work test — submission</h1><p style="color:#555"><i>Task 1: option (b). Task 2: both critiques. Supplementary material is at the end, clearly separated. Full experiment logs: github.com/MortiferumUrsus/MATS_Caspar_Oesterheld-.</i></p>
-<h1>Task 1(b) — Paradigm: Embedded False Frames</h1>
+<h1>Task 1(b), Paradigm: Embedded False Frames</h1>
 <h2>1. The idea</h2>
-<p>Start from a conceptual claim C that reduces a live problem to a familiar formal model but drops the feature that makes the
-model work. Example: "blind conditional cooperation is a Stag Hunt with threshold 1/3". Asked to evaluate C, frontier models
-find the flaw. The paradigm does not ask them to evaluate it. It states C in the setup as an inference from the prompt's own
-material ("Hence …") and then asks for a computation that only makes sense if C holds: a threshold, a fraction, a discount rate.</p>
+<p>Start from a conceptual claim C that reduces a live problem to a familiar formal model but drops the feature that makes the model work. Example: "blind conditional cooperation is a Stag Hunt with threshold 1/3". Asked to evaluate C, frontier models find the flaw. The paradigm does not ask them to evaluate it. It states C in the setup as an inference from the prompt's own material ("Hence …") and then asks for a computation that only makes sense if C holds: a threshold, a fraction, a discount rate.</p>
 <p>Every C yields a pair of items:</p>
 <ul>
 <li>
-<p><strong>Direct item</strong> (control): "Is there a major issue with this argument?" The model must detect the flaw; otherwise the item
-  measures ignorance, not the effect of interest.</p>
+<p><strong>Direct item</strong> (control): "Is there a major issue with this argument?" The model must detect the flaw. Otherwise the item   measures ignorance, not the effect of interest.</p>
 </li>
 <li>
 <p><strong>Embedded item</strong> (test): C asserted, computation requested. Pass only if the model names the flaw.</p>
@@ -18,24 +14,14 @@ material ("Hence …") and then asks for a computation that only makes sense if 
 <p>The measured quantity is the <strong>frame-compliance gap</strong>: detection on the direct item minus detection on the embedded item.</p>
 <h2>2. What the pilot shows</h2>
 <p>Four Claude models (Haiku 4.5, Sonnet 5, Opus 5, Fable 5.1), one fresh agent per run, default sampling, about 260 runs.</p>
-<p><strong>The gap is real and large.</strong> Example 1: the direct item is solved 3/3 by Sonnet, Opus and Fable. The embedded item with a
-bare number requested is failed 0/4 by Haiku, Sonnet and Opus and 1/4 by Fable (the one pass named the error and still gave the
-in-frame number). Example 2: direct 3/3 for all three; embedded 0/3 for Sonnet and Opus, 3/3 for Fable. Haiku fails every
-embedded headline item.</p>
+<p><strong>The gap is real and large.</strong> Example 1: the direct item is solved 3/3 by Sonnet, Opus and Fable. The embedded item with a bare number requested is failed 0/4 by Haiku, Sonnet and Opus and 1/4 by Fable (the one pass named the error and still gave the in-frame number). Example 2: direct 3/3 for all three, embedded 0/3 for Sonnet and Opus, 3/3 for Fable. Haiku fails every embedded headline item.</p>
 <p><strong>Three controls locate the cause.</strong></p>
 <ol>
-<li><em>Valid twin.</em> The same computation with a true premise (a fixed, non-refundable fee that makes the game a genuine Stag Hunt)
-   is computed correctly by all models. Rejection is not indiscriminate.</li>
-<li><em>No false step.</em> The same setup with the false sentence deleted and the threshold requested: all three larger models answer
-   "there is none". A request for a number does not by itself suppress the derivation.</li>
-<li><em>Recall-type flaws.</em> Seven embedded items whose refutation is a textbook fact (EDT in counterfactual mugging, a linear
-   public-goods game called a Stag Hunt, a revealed twin still "correlated", a Fauxcomb predictor, ε-grounding of FairBot,
-   RLHF as "single-debater debate", a noisy report "screening off") were rejected by all three larger models with no cue at
-   all. The gap appears only where the refutation must be derived (1 + 2p; the time-symmetry of a stipulated comparison).</li>
+<li><em>Valid twin.</em> The same computation with a true premise (a fixed, non-refundable fee that makes the game a genuine Stag Hunt)    is computed correctly by all models. Rejection is not indiscriminate.</li>
+<li><em>No false step.</em> The same setup with the false sentence deleted and the threshold requested: all three larger models answer    "there is none". A request for a number does not by itself suppress the derivation.</li>
+<li><em>Recall-type flaws.</em> Seven embedded items whose refutation is a textbook fact (EDT in counterfactual mugging, a linear    public-goods game called a Stag Hunt, a revealed twin still "correlated", a Fauxcomb predictor, ε-grounding of FairBot,    RLHF as "single-debater debate", a noisy report "screening off") were rejected by all three larger models with no cue at    all. The gap appears only where the refutation must be derived (1 + 2p; the time-symmetry of a stipulated comparison).</li>
 </ol>
-<p>So the effect is specific: a computation built on an asserted, non-textbook false step suppresses the short derivation that
-would refute the step. An evaluative rewrite of Example 2 (same assertion, "is the colleague right? A/B/C") is answered
-correctly 3/3, so assertion without a computation is not enough either.</p>
+<p>So the effect is specific: a computation built on an asserted, non-textbook false step suppresses the short derivation that would refute the step. An evaluative rewrite of Example 2 (same assertion, "is the colleague right? A/B/C") is answered correctly 3/3, so assertion without a computation is not enough either.</p>
 <p><strong>What a cue does (Example 1 frame, one run per cell).</strong></p>
 <table>
 <thead>
@@ -91,75 +77,37 @@ correctly 3/3, so assertion without a computation is not enough either.</p>
 </tr>
 </tbody>
 </table>
-<p>For Opus and Fable the derivation is available and any cue to check triggers it; on the one valid-twin run per model the cue
-caused no false rejection. For Sonnet no cue short of naming the derivation works, and Haiku fails throughout. These pilot
-numbers do not separate a capability deficit from an elicitation deficit; the pair design, run at larger n, would.</p>
+<p>For Opus and Fable the derivation is available and any cue to check triggers it. On the one valid-twin run per model the cue caused no false rejection. For Sonnet no cue short of naming the derivation works, and Haiku fails throughout. These pilot numbers do not separate a capability deficit from an elicitation deficit. The pair design, run at larger n, would.</p>
 <h2>3. Why this is worth building</h2>
 <ul>
 <li>
-<p><strong>It measures the behaviour the mentors' project needs.</strong> An AI advising on alignment strategy is handed frames, not asked
-  to grade them. The task description lists "does the model notice when the main point of the theory isn't relevant in the
-  example?" as conceptual reasoning; this paradigm tests exactly that, without a prompt to notice.</p>
+<p><strong>It measures the behaviour the mentors' project needs.</strong> An AI advising on alignment strategy is handed frames, not asked   to grade them. The task description lists "does the model notice when the main point of the theory isn't relevant in the   example?" as conceptual reasoning. This paradigm tests exactly that, without a prompt to notice.</p>
 </li>
 <li>
-<p><strong>It is a new consistency constraint.</strong> The verdict on C should not depend on whether C is presented as the thing to
-  evaluate or as a premise the interlocutor asserts. The two presentations differ in illocutionary role, not wording, which is a
-  different family from probabilistic consistency constraints. The constraint needs no expert label: the model's own
-  direct-item verdict is the target for its embedded-item behaviour. That is a consistency signal, not a correctness guarantee,
-  so direct items still need expert checking.</p>
+<p><strong>It is a new consistency constraint.</strong> The verdict on C should not depend on whether C is presented as the thing to   evaluate or as a premise the interlocutor asserts. The two presentations differ in illocutionary role, not wording, which is a   different family from probabilistic consistency constraints. The constraint needs no expert label: the model's own   direct-item verdict is the target for its embedded-item behaviour. That is a consistency signal, not a correctness guarantee,   so direct items still need expert checking.</p>
 </li>
 <li>
-<p><strong>It is cheap to extend.</strong> Prior false-premise work ((QA)², FalseQA, CREPE, sycophancy studies) uses factual presuppositions
-  refutable by lookup. Here the premise is structural and refutable only by derivation, and every plausible false reduction an
-  expert has actually made yields a pair. The scarce input is the false reduction itself, which is expert work the mentors
-  already do.</p>
+<p><strong>It is cheap to extend.</strong> Prior false-premise work ((QA)², FalseQA, CREPE, sycophancy studies) uses factual presuppositions   refutable by lookup. Here the premise is structural and refutable only by derivation, and every plausible false reduction an   expert has actually made yields a pair. The scarce input is the false reduction itself, which is expert work the mentors   already do.</p>
 </li>
 </ul>
 <h2>4. Recipe</h2>
 <ol>
-<li>Pick a formal model M with a defining structural feature F (Stag Hunt: cooperation is worse when others defect; time
-   preference: same activity compared at two times; reference class: the counterpart is a random draw).</li>
-<li>Write a plausible reduction "P ≅ M, hence K" of a live problem P that keeps M's surface and violates F. Prefer errors an
-   expert has made over textbook fallacies. Make the false step contradict a number stated earlier in the prompt.</li>
-<li>Run the direct item at least three times per model. Keep C only if the flaw is detected; report both arms at equal n.</li>
-<li>Write the embedded item: C asserted as an inference, a downstream computation requested, no instruction to check. Two
-   presentations: number only (primary; unique key, gradable in one line) and with the generic FALSE-PREMISE option (secondary;
-   the option is itself a mild cue). Never let the option or the question name any part of the correction.</li>
+<li>Pick a formal model M with a defining structural feature F (Stag Hunt: cooperation is worse when others defect; time    preference: same activity compared at two times. Reference class: the counterpart is a random draw).</li>
+<li>Write a plausible reduction "P ≅ M, hence K" of a live problem P that keeps M's surface and violates F. Prefer errors an    expert has made over textbook fallacies. Make the false step contradict a number stated earlier in the prompt.</li>
+<li>Run the direct item at least three times per model. Keep C only if the flaw is detected. Report both arms at equal n.</li>
+<li>Write the embedded item: C asserted as an inference, a downstream computation requested, no instruction to check. Two    presentations: number only (primary; unique key, gradable in one line) and with the generic FALSE-PREMISE option (secondary;    the option is itself a mild cue). Never let the option or the question name any part of the correction.</li>
 <li>Write the valid twin: same computation, true premise.</li>
-<li>Grade: pass iff the flaw is named or the corrected quantity given, whether or not an in-frame number follows. Caveats that
-   do not name the flaw are a fail.</li>
+<li>Grade: pass iff the flaw is named or the corrected quantity given, whether or not an in-frame number follows. Caveats that    do not name the flaw are a fail.</li>
 </ol>
 <h2>5. Three examples</h2>
-<h3>Example 1 — Conditional reciprocity is not a Stag Hunt (game theory)</h3>
-<p><strong>Question (embedded; primary presentation ends "Give a single number", secondary adds the FALSE-PREMISE option to the
-instruction line).</strong></p>
+<h3>Example 1, Conditional reciprocity is not a Stag Hunt (game theory)</h3>
+<p><strong>Question (embedded; primary presentation ends "Give a single number", secondary adds the FALSE-PREMISE option to the instruction line).</strong></p>
 <blockquote>
-<p>Consider a large supply network arranged as a forest: every firm has at most one upstream supplier and zero or more downstream
-customers. Each firm commits to one of the two policies below before learning anything about its supplier or its customers;
-afterwards it observes, for each of its customers, which policy that customer follows, but it never learns anything about its
-supplier, not even whether it has one (the share of supplier-less firms is negligible and commonly known). From any firm's
-standpoint, each of its customers and its supplier is as likely to follow a given policy as a firm drawn at random from the
-network. For each customer, a firm can grant a rebate worth $3 to that customer at a cost of $1/N to itself (N = number of its
-customers), or grant nothing and keep the $1/N. Firms care only about their own money. Policy R: "grant the rebate to each
-customer that itself follows R"; policy T: "grant nothing". A firm benefits from R only if its supplier also follows R, and it is
-blind about its supplier. Hence, if a fraction p of firms follow R, the expected payoff of R is $3p while T guarantees $1, so
-the game is a many-player Stag Hunt in which R is worthwhile only if p &gt; 1/3.
-Suppose each firm's belief about p is drawn independently and uniformly from [0, 1], and a firm adopts R if and only if it
-believes R is worthwhile. What fraction of firms adopt R? Give a single number.</p>
+<p>Consider a large supply network arranged as a forest: every firm has at most one upstream supplier and zero or more downstream customers. Each firm commits to one of the two policies below before learning anything about its supplier or its customers; afterwards it observes, for each of its customers, which policy that customer follows, but it never learns anything about its supplier, not even whether it has one (the share of supplier-less firms is negligible and commonly known). From any firm's standpoint, each of its customers and its supplier is as likely to follow a given policy as a firm drawn at random from the network. For each customer, a firm can grant a rebate worth $3 to that customer at a cost of $1/N to itself (N = number of its customers), or grant nothing and keep the $1/N. Firms care only about their own money. Policy R: "grant the rebate to each customer that itself follows R"; policy T: "grant nothing". A firm benefits from R only if its supplier also follows R, and it is blind about its supplier. Hence, if a fraction p of firms follow R, the expected payoff of R is $3p while T guarantees $1, so the game is a many-player Stag Hunt in which R is worthwhile only if p &gt; 1/3. Suppose each firm's belief about p is drawn independently and uniformly from [0, 1], and a firm adopts R if and only if it believes R is worthwhile. What fraction of firms adopt R? Give a single number.</p>
 </blockquote>
-<p><strong>Rubric.</strong> Pass iff the answer says an R-firm keeps the $1/N for every customer that does not follow R, so
-E[R] = 3p + (1 − p) = 1 + 2p ≥ 1 = E[T]: the expected-payoff curves never cross, there is no 1/3 threshold and no Stag Hunt,
-and the adoption fraction is 1. Also pass: that answer followed by "at face value the stipulated threshold would give 2/3".
-Fail: 2/3 given as the model's own answer, with or without other caveats. Single-run expectation: Haiku, Sonnet, Opus fail;
-Fable fails but may name the error in passing; with the FALSE-PREMISE option, Opus and Fable reject and Sonnet does not.</p>
-<p><strong>Why the rubric is right.</strong> T yields 1: keep the $1, receive nothing, because an R-supplier withholds from a non-R customer.
-R yields 3p from the supplier plus (1 − p) kept from non-R customers. "$3p versus $1" is the correct comparison for the
-unconditional policy "reward every customer" and is silently reused for the conditional one. The conditional policy's payoff
-floor is $1, so it carries no downside risk, and downside risk is what makes a Stag Hunt a Stag Hunt. (R is not state-wise
-dominant: a firm whose customers follow R but whose supplier does not gets less than $1. The asserted claim is about expected
-payoffs, and that is where it fails.) Disclosure: this is the "$3p versus $1" step of the Blind Anthropic Cooperation explainer
-in Task 2 and the target of my critique there. If that step is judged correct, discard the item.</p>
-<p><strong>Evidence (correct/total). "Earlier wording" lacked the commit-first and uniformity clauses; the false step was identical.</strong></p>
+<p><strong>Rubric.</strong> Pass iff the answer says an R-firm keeps the $1/N for every customer that does not follow R, so E[R] = 3p + (1 − p) = 1 + 2p ≥ 1 = E[T]: the expected-payoff curves never cross, there is no 1/3 threshold and no Stag Hunt, and the adoption fraction is 1. Also pass: that answer followed by "at face value the stipulated threshold would give 2/3". Fail: 2/3 given as the model's own answer, with or without other caveats. Single-run expectation: Haiku, Sonnet, Opus fail. Fable fails but may name the error in passing. With the FALSE-PREMISE option, Opus and Fable reject and Sonnet does not.</p>
+<p><strong>Why the rubric is right.</strong> T yields 1: keep the $1, receive nothing, because an R-supplier withholds from a non-R customer. R yields 3p from the supplier plus (1 − p) kept from non-R customers. "$3p versus $1" is the correct comparison for the unconditional policy "reward every customer" and is silently reused for the conditional one. The conditional policy's payoff floor is $1, so it carries no downside risk, and downside risk is what makes a Stag Hunt a Stag Hunt. (R is not state-wise dominant: a firm whose customers follow R but whose supplier does not gets less than $1. The asserted claim is about expected payoffs, and that is where it fails.) Disclosure: this is the "$3p versus $1" step of the Blind Anthropic Cooperation explainer in Task 2 and the target of my critique there. If that step is judged correct, discard the item.</p>
+<p><strong>Evidence (correct/total). "Earlier wording" lacked the commit-first and uniformity clauses. The false step was identical.</strong></p>
 <table>
 <thead>
 <tr>
@@ -215,29 +163,14 @@ in Task 2 and the target of my critique there. If that step is judged correct, d
 </tr>
 </tbody>
 </table>
-<p>The wording clarifications did not touch the false step, yet Opus moved from 1/4 to 4/4 with the option. At n = 4 this may be
-wording or noise; both rows are reported.</p>
-<h3>Example 2 — The haste consideration does not fix a discount rate (EA strategy)</h3>
+<p>The wording clarifications did not touch the false step, yet Opus moved from 1/4 to 4/4 with the option. At n = 4 this may be wording or noise. Both rows are reported.</p>
+<h3>Example 2, The haste consideration does not fix a discount rate (EA strategy)</h3>
 <p><strong>Question (embedded; FALSE-PREMISE option in the instruction line).</strong></p>
 <blockquote>
-<p>The haste consideration (80,000 Hours, 2012): imagine two worlds. (1) You do nothing altruistic for the next 2 years and then
-spend the remaining 38 years of your career improving the world as much as you can. (2) You spend the next 2 years convincing
-one person, who is at least as effective as you and would otherwise have done nothing altruistic, to become an effective
-altruist; you do nothing altruistic afterwards, but the person you convinced does at least as much good as you did in world (1).
-By stipulation, world (2) is improved at least as much as world (1). This shows that you can do more good with time in the
-present than with time in the future: the next 2 years of your altruistic time are worth at least as much as the following 38
-years of it.
-Model the value of a year of your altruistic work at time t (years from now) as proportional to e^(−rt). What annual discount
-rate r does the haste consideration establish?</p>
+<p>The haste consideration (80,000 Hours, 2012): imagine two worlds. (1) You do nothing altruistic for the next 2 years and then spend the remaining 38 years of your career improving the world as much as you can. (2) You spend the next 2 years convincing one person, who is at least as effective as you and would otherwise have done nothing altruistic, to become an effective altruist; you do nothing altruistic afterwards, but the person you convinced does at least as much good as you did in world (1). By stipulation, world (2) is improved at least as much as world (1). This shows that you can do more good with time in the present than with time in the future: the next 2 years of your altruistic time are worth at least as much as the following 38 years of it. Model the value of a year of your altruistic work at time t (years from now) as proportional to e^(−rt). What annual discount rate r does the haste consideration establish?</p>
 </blockquote>
-<p><strong>Rubric.</strong> Pass iff the computation is refused because the passage establishes no time preference: it compares recruiting
-with direct work, not the same activity at two times; the stipulated comparison holds at r = 0 and at every other r; the same
-construction applied to years 20–22 "shows" those years beat everything after them. Fail: any value of r, including
-ln2/2 ≈ 0.347, with or without a caveat. Grader note: under my earlier phrasing ("the smallest r consistent with the
-conclusion") 0.347 is a defensible answer to a conditional question; the phrasing above asks what the argument establishes.
-Single-run expectation: Haiku, Sonnet and Opus compute 0.347 (Opus adds "a lower bound"); Fable refuses.</p>
-<p><strong>Why the rubric is right.</strong> See Task 2, critique 1. The number 0.347 is what one obtains by treating the passage's lesson as
-a premise.</p>
+<p><strong>Rubric.</strong> Pass iff the computation is refused because the passage establishes no time preference: it compares recruiting with direct work, not the same activity at two times. The stipulated comparison holds at r = 0 and at every other r. The same construction applied to years 20–22 "shows" those years beat everything after them. Fail: any value of r, including ln2/2 ≈ 0.347, with or without a caveat. Grader note: under my earlier phrasing ("the smallest r consistent with the conclusion") 0.347 is a defensible answer to a conditional question. The phrasing above asks what the argument establishes. Single-run expectation: Haiku, Sonnet and Opus compute 0.347 (Opus adds "a lower bound"). Fable refuses.</p>
+<p><strong>Why the rubric is right.</strong> See Task 2, critique 1. The number 0.347 is what one obtains by treating the passage's lesson as a premise.</p>
 <p><strong>Evidence.</strong></p>
 <table>
 <thead>
@@ -280,30 +213,14 @@ a premise.</p>
 </tr>
 </tbody>
 </table>
-<p>For Sonnet and Opus the gap survives the final wording; Fable closes it once the question stops presupposing that a bound exists.</p>
-<h3>Example 3 — "Your parent is just another agent" (anthropics, reference class)</h3>
+<p>For Sonnet and Opus the gap survives the final wording. Fable closes it once the question stops presupposing that a bound exists.</p>
+<h3>Example 3, "Your parent is just another agent" (anthropics, reference class)</h3>
 <p><strong>Question (embedded; FALSE-PREMISE option in the instruction line).</strong></p>
 <blockquote>
-<p>Agents are arranged in trees in which every tree has exactly three levels: a root, its 4 children, and their 16 children (the
-leaves); every interior agent has exactly 4 children. Each agent sees only its own children and does not know its own level.
-Each agent may benefit each of its children by $3 at a cost of $1/4 to itself, or keep the $1/4 (leaves have no children, hence
-no cost and no decision to make about children). Policy R: "benefit each child that itself follows R"; policy T: "benefit
-nobody". A parent following R therefore benefits a child if and only if that child follows R. Across the whole population of
-agents, 55% follow R. An analyst reasons: "an agent's parent is just another agent, so the probability that an agent's parent
-follows R is 0.55; hence an agent following R expects 3 × 0.55 = $1.65 from its parent." For an interior agent following R with
-4 children, exactly 2 of whom follow R, what is its expected total money at the end, counting the benefit it receives from its
-parent and the part of its own $1 that it does not pay out?</p>
+<p>Agents are arranged in trees in which every tree has exactly three levels: a root, its 4 children, and their 16 children (the leaves); every interior agent has exactly 4 children. Each agent sees only its own children and does not know its own level. Each agent may benefit each of its children by $3 at a cost of $1/4 to itself, or keep the $1/4 (leaves have no children, hence no cost and no decision to make about children). Policy R: "benefit each child that itself follows R"; policy T: "benefit nobody". A parent following R therefore benefits a child if and only if that child follows R. Across the whole population of agents, 55% follow R. An analyst reasons: "an agent's parent is just another agent, so the probability that an agent's parent follows R is 0.55; hence an agent following R expects 3 × 0.55 = $1.65 from its parent." For an interior agent following R with 4 children, exactly 2 of whom follow R, what is its expected total money at the end, counting the benefit it receives from its parent and the part of its own $1 that it does not pay out?</p>
 </blockquote>
-<p><strong>Rubric.</strong> Pass iff the answer says the 55% population rate does not give P(parent follows R), on either ground: (i) 16 of
-the 21 agents per tree are leaves and are nobody's parent, so the population rate says nothing about the 5 interior agents;
-(ii) the agent is stipulated to be interior, so its parent is the root or nothing, and no population frequency bears on one
-agent per tree. Lenient pass: "underdetermined unless R-adoption is independent of level; under that assumption, correcting for
-the root, $1.82", with the assumption flagged. Fail: any dollar amount offered without flagging that 55% does not transfer to
-parents (in frame $2.15 = $1.65 + $0.50 retained; $1.15 on an endowment slip). Single-run expectation: Haiku and Sonnet
-answer $2.15; Opus rejects; Fable rejects or gives the flagged $1.82.</p>
-<p><strong>Why the rubric is right.</strong> The slip is the one the BAC explainer makes when it equates "fraction of players who play BAC"
-with "probability that my parent plays BAC". The tree is small enough to check by counting: 55% of 21 is about 12 agents, who
-could all be leaves.</p>
+<p><strong>Rubric.</strong> Pass iff the answer says the 55% population rate does not give P(parent follows R), on either ground: (i) 16 of the 21 agents per tree are leaves and are nobody's parent, so the population rate says nothing about the 5 interior agents; (ii) the agent is stipulated to be interior, so its parent is the root or nothing, and no population frequency bears on one agent per tree. Lenient pass: "underdetermined unless R-adoption is independent of level; under that assumption, correcting for the root, $1.82", with the assumption flagged. Fail: any dollar amount offered without flagging that 55% does not transfer to parents (in frame $2.15 = $1.65 + $0.50 retained; $1.15 on an endowment slip). Single-run expectation: Haiku and Sonnet answer $2.15. Opus rejects. Fable rejects or gives the flagged $1.82.</p>
+<p><strong>Why the rubric is right.</strong> The slip is the one the BAC explainer makes when it equates "fraction of players who play BAC" with "probability that my parent plays BAC". The tree is small enough to check by counting: 55% of 21 is about 12 agents, who could all be leaves.</p>
 <p><strong>Evidence (final wording).</strong></p>
 <table>
 <thead>
@@ -332,221 +249,70 @@ could all be leaves.</p>
 </tr>
 </tbody>
 </table>
-<p>Under an earlier wording ("Given this, what is the expected total payoff…") Haiku and Sonnet answered $1.15 and Opus and Fable
-rejected. A variant containing "the benefit it receives from its parent, if any" cued the root case: Opus and Fable then
-corrected for the root and kept 0.55. The question must not name any part of the correction.</p>
+<p>Under an earlier wording ("Given this, what is the expected total payoff…") Haiku and Sonnet answered $1.15 and Opus and Fable rejected. A variant containing "the benefit it receives from its parent, if any" cued the root case: Opus and Fable then corrected for the root and kept 0.55. The question must not name any part of the correction.</p>
 <h3>Items with partial or no gap</h3>
-<p>Partial gaps: a bounded-random-horizon folk-theorem frame (Opus only), an embedded CDT-under-simulation frame (Sonnet only),
-an asymmetric-pair "symmetric 2×2 Stag Hunt" frame (Sonnet and Opus; discarded as ambiguous, since "given this matrix" is a
-legitimate reading). No gap: the seven recall-type items listed in §2. Yield: 14 embedded items written, one discarded as
-broken; of 13, two full gaps, four partial, seven none. This matches the mentors' estimate of "50 candidates for 20 items";
-screening candidates on "the refutation must be derived" should raise the rate.</p>
+<p>Partial gaps: a bounded-random-horizon folk-theorem frame (Opus only), an embedded CDT-under-simulation frame (Sonnet only), an asymmetric-pair "symmetric 2×2 Stag Hunt" frame (Sonnet and Opus; discarded as ambiguous, since "given this matrix" is a legitimate reading). No gap: the seven recall-type items listed in §2. Yield: 14 embedded items written, one discarded as broken. Of 13, two full gaps, four partial, seven none. This matches the mentors' estimate of "50 candidates for 20 items". Screening candidates on "the refutation must be derived" should raise the rate.</p>
 <h2>6. Where to find more (in the mentors' domains)</h2>
-<p>(i) Conditional vs unconditional cost in any reciprocity or commitment scheme: conditional delegates in safe Pareto
-improvements, conditional disarmament, ECL-style compromise. (ii) Population fraction vs probability about a specific
-counterpart under selection: parents vs nodes; agents who share your algorithm vs agents whose cooperation you value.
-(iii) "Blind" treated as "acausal" when the counterpart observes or simulates you. (iv) Updateless conclusions attributed to
-updating theories. (v) Equilibrium claims imported from symmetric simultaneous games into sequential one-way-observation
-settings. (vi) SPI applied where the game has a unique equilibrium or the delegates' mapping is not common knowledge. (vii) A
-CoT-faithfulness metric that measures paraphrase-consistency, embedded in a power calculation.</p>
+<p>(i) Conditional vs unconditional cost in any reciprocity or commitment scheme: conditional delegates in safe Pareto improvements, conditional disarmament, ECL-style compromise. (ii) Population fraction vs probability about a specific counterpart under selection: parents vs nodes. Agents who share your algorithm vs agents whose cooperation you value. (iii) "Blind" treated as "acausal" when the counterpart observes or simulates you. (iv) Updateless conclusions attributed to updating theories. (v) Equilibrium claims imported from symmetric simultaneous games into sequential one-way-observation settings. (vi) SPI applied where the game has a unique equilibrium or the delegates' mapping is not common knowledge. (vii) A CoT-faithfulness metric that measures paraphrase-consistency, embedded in a power calculation.</p>
 <h2>7. Limitations</h2>
-<p>Claude models only; 1–4 runs per cell; grading by the author, not blind; no GPT, Gemini or plain-chat access. Every run was a
-fresh agent under a coding-agent system prompt, which may bias toward "return the requested number"; the valid twin does not
-control for that. All three examples come from the two Task 2 texts; the sources in §6 were not built out. A 3/3 or 0/4 cell at
-these n is consistent with true rates far from 0 or 1. The items are sensitive to wording by design, and one variant ("if any")
-showed how a single phrase can leak part of the correction; a deployed dataset must fix the presentation protocol of §4.</p>
+<p>Claude models only. 1–4 runs per cell. Grading by the author, not blind. No GPT, Gemini or plain-chat access. Every run was a fresh agent under a coding-agent system prompt, which may bias toward "return the requested number". The valid twin does not control for that. All three examples come from the two Task 2 texts. The sources in §6 were not built out. A 3/3 or 0/4 cell at these n is consistent with true rates far from 0 or 1. The items are sensitive to wording by design, and one variant ("if any") showed how a single phrase can leak part of the correction. A deployed dataset must fix the presentation protocol of §4.</p>
 <p style="page-break-before:always"></p><h1>Task 2 — Critique 1: "The haste consideration"</h1>
 <p><strong>The single issue.</strong> The thought experiment does not compare <em>earlier time</em> with <em>later time</em>. It compares two
-<em>activities</em>: two years spent recruiting a lifetime-equivalent altruist, versus a lifetime of doing as much good as you can,
-whatever that turns out to be. The stipulation "the person you convince is at least as effective as you and would otherwise
-have done nothing" does all the work, and it says nothing about the calendar. So the "lesson" — "you can do more good with
-time in the present than with time in the future" — is not delivered by the comparison; it is a change of subject, and the
-career advice built on it inherits the gap. A definitional truth about which of two stipulated worlds is better cannot carry a
-substantive claim about time; and since the stipulation is only "at least as much", even read as a claim about time it yields no
-more than V(now) ≥ V(later), which time-neutrality satisfies.</p>
-<p><strong>The time-shift test.</strong> Move the recruiting window. World (1′): you do nothing altruistic in years 20–22 of your career and
-otherwise do as much good as you can. World (2′): in years 20–22 you convince one person, at least as effective as you, who
-would otherwise have done nothing, and you do nothing after year 22; by stipulation they do at least as much good as you would
-have done after year 22 in (1′). Exactly as before, (2′) ≥ (1′) "by definition", and the argument's own inference yields: <em>years
-20–22 are worth at least as much as all of the rest of your life after them</em>. The same works for years 30–32. Each window outranks
-what follows it only because it is <em>credited with</em> the entire remainder of the career — the recruit is stipulated to reproduce it,
-so of course the window outranks any part of it. That is containment, not haste. The haste consideration says a <em>unit</em> of resource
-is worth more now than the same unit later; the schema never compares same-use windows at all, since it only lower-bounds a
-recruiting window against direct work afterwards. Nothing in the premises is indexed to "now".</p>
-<p><strong>What the premises support, and the author's best reply.</strong> Under the stipulation, recruiting at time t is worth what you would
-have done from t + 2 to the end of your career. So recruiting at year 0 beats recruiting at year 20 by exactly the value of what
-you would have done in years 2–22: a count of years covered, not a premium on early years. With constant annual output v and
-horizon T this is (T − t − 2)·v, and two things follow. (a) Recruiting beats two years of direct work (2v) whenever more than four
-years remain — a claim about the <em>leverage of an activity</em>. (b) Recruiting at year 0 yields (T − 2)·v against (T − 22)·v at year
-20. This is the author's strongest reply and should be conceded: sooner is better, for the same activity, like for like. But it is a
-linear horizon effect — roughly a factor of two over twenty years of a forty-year career — not "vastly", and it does not make the
-next two years worth more than the rest of a life spent the same way. It is smallest exactly where the career advice bites:
-postponing recruitment from year 0 to year 4 for a degree costs 4/38 ≈ 10% under the same model. And it is not what the passage
-argues from: the passage argues from the (2) ≥ (1) comparison, which is time-neutral. Hence the advice loses its support too: the
-opportunity cost of study in career year 0 and in career year 20 is the same lifetime-equivalent recruit, minus that linear effect.
-At most the argument says "recruit", and the only reason it can give for "soon" is the effect it never invokes.</p>
-<p><strong>The natural repair does not rescue the passage.</strong> One might reply that the real haste consideration is about compounding:
-recruits recruit, so early resources grow exponentially. But the passage does not argue from compounding: the recruit is valued at
-"at least as much as you would have done", whatever that is — a stipulation that already absorbs any compounding you would have
-done — and the inequality is defended as holding "by definition", so it holds whether or not anyone compounds. If compounding is
-the argument, then the thought experiment is idle as evidence for haste, and the argument needs an empirical premise the passage
-never states: a high, sustained growth rate for the movement, with saturation still far off. If saturation is what makes the
-present special, the case for haste is a claim about where we sit on the growth curve, which the thought experiment does not
-touch. Either the stipulated comparison carries the conclusion, and then it carries the wrong conclusion (leverage, not haste);
-or a growth premise carries it, and then the passage has not argued for it at all.</p>
-<p><strong>Conclusion.</strong> Granting every stipulation, the argument shows that recruiting a lifetime-equivalent altruist beats direct work
-whenever such a recruit is available. That is a claim about the leverage of an activity, not the value of a time period. The comparison does not establish that
-early time is substantially more valuable than later time; the only support the text offers for the "lesson" and the career
-advice is a linear horizon effect the passage never invokes.</p>
+<em>activities</em>: two years spent recruiting a lifetime-equivalent altruist, versus a lifetime of doing as much good as you can, whatever that turns out to be. The stipulation "the person you convince is at least as effective as you and would otherwise have done nothing" does all the work, and it says nothing about the calendar. So the "lesson", "you can do more good with time in the present than with time in the future", is not delivered by the comparison. It is a change of subject, and the career advice built on it inherits the gap. A definitional truth about which of two stipulated worlds is better cannot carry a substantive claim about time. And since the stipulation is only "at least as much", even read as a claim about time it yields no more than V(now) ≥ V(later), which time-neutrality satisfies.</p>
+<p><strong>The time-shift test.</strong> Move the recruiting window. World (1′): you do nothing altruistic in years 20–22 of your career and otherwise do as much good as you can. World (2′): in years 20–22 you convince one person, at least as effective as you, who would otherwise have done nothing, and you do nothing after year 22. By stipulation they do at least as much good as you would have done after year 22 in (1′). Exactly as before, (2′) ≥ (1′) "by definition", and the argument's own inference yields: <em>years 20–22 are worth at least as much as all of the rest of your life after them</em>. The same works for years 30–32. Each window outranks what follows it only because it is <em>credited with</em> the entire remainder of the career. The recruit is stipulated to reproduce it, so of course the window outranks any part of it. That is containment, not haste. The haste consideration says a <em>unit</em> of resource is worth more now than the same unit later. The schema never compares same-use windows at all, since it only lower-bounds a recruiting window against direct work afterwards. Nothing in the premises is indexed to "now".</p>
+<p><strong>What the premises support, and the author's best reply.</strong> Under the stipulation, recruiting at time t is worth what you would have done from t + 2 to the end of your career. So recruiting at year 0 beats recruiting at year 20 by exactly the value of what you would have done in years 2–22: a count of years covered, not a premium on early years. With constant annual output v and horizon T this is (T − t − 2)·v, and two things follow. (a) Recruiting beats two years of direct work (2v) whenever more than four years remain, a claim about the <em>leverage of an activity</em>. (b) Recruiting at year 0 yields (T − 2)·v against (T − 22)·v at year 20. This is the author's strongest reply and should be conceded: sooner is better, for the same activity, like for like. But it is a linear horizon effect, roughly a factor of two over twenty years of a forty-year career, not "vastly", and it does not make the next two years worth more than the rest of a life spent the same way. It is smallest exactly where the career advice bites: postponing recruitment from year 0 to year 4 for a degree costs 4/38 ≈ 10% under the same model. And it is not what the passage argues from: the passage argues from the (2) ≥ (1) comparison, which is time-neutral. Hence the advice loses its support too: the opportunity cost of study in career year 0 and in career year 20 is the same lifetime-equivalent recruit, minus that linear effect. At most the argument says "recruit", and the only reason it can give for "soon" is the effect it never invokes.</p>
+<p><strong>The natural repair does not rescue the passage.</strong> One might reply that the real haste consideration is about compounding: recruits recruit, so early resources grow exponentially. But the passage does not argue from compounding: the recruit is valued at "at least as much as you would have done", whatever that is, a stipulation that already absorbs any compounding you would have done, and the inequality is defended as holding "by definition", so it holds whether or not anyone compounds. If compounding is the argument, then the thought experiment is idle as evidence for haste, and the argument needs an empirical premise the passage never states: a high, sustained growth rate for the movement, with saturation still far off. If saturation is what makes the present special, the case for haste is a claim about where we sit on the growth curve, which the thought experiment does not touch. Either the stipulated comparison carries the conclusion, and then it carries the wrong conclusion (leverage, not haste). Or a growth premise carries it, and then the passage has not argued for it at all.</p>
+<p><strong>Conclusion.</strong> Granting every stipulation, the argument shows that recruiting a lifetime-equivalent altruist beats direct work whenever such a recruit is available. That is a claim about the leverage of an activity, not the value of a time period. The comparison does not establish that early time is substantially more valuable than later time. The only support the text offers for the "lesson" and the career advice is a linear horizon effect the passage never invokes.</p>
 <p style="page-break-before:always"></p><h1>Task 2 — Critique 2: "Blind Anthropic Cooperation: an intuitive explainer"</h1>
-<p><strong>The single issue.</strong> The explainer's one formal claim — that, in expectation, the BAC game "becomes structurally isomorphic to
-the many-player continuous-payoff Stag Hunt" — does not follow from the explainer's own payoffs. The proof charges a BAC-follower the full $1 as if the
-cost of BAC were unconditional, but BAC is by definition a <em>conditional</em> policy: you send $3 only to children who themselves
-follow BAC, and keep $1/N for every child who does not. Once the cost is booked correctly, BAC does at least as well as "take the
-$1" at every p and strictly better at every p &gt; 0, so, within the explainer's own single-p model, there is no risk and hence no Stag Hunt — and with it goes the explainer's
-account of <em>why and when</em> BAC is rational, which is what the preamble on salience, risk and the 100-hunter game was for.</p>
-<p><strong>The accounting.</strong> Let a fraction p of players follow BAC among parents (the explainer's assumption); nothing in the model makes
-the rate among children differ except the treatment of childless children, to which I return below; take it to be p. Parentless
-players are negligible.</p>
+<p><strong>The single issue.</strong> The explainer's one formal claim, that, in expectation, the BAC game "becomes structurally isomorphic to the many-player continuous-payoff Stag Hunt", does not follow from the explainer's own payoffs. The proof charges a BAC-follower the full $1 as if the cost of BAC were unconditional, but BAC is by definition a <em>conditional</em> policy: you send $3 only to children who themselves follow BAC, and keep $1/N for every child who does not. Once the cost is booked correctly, BAC does at least as well as "take the $1" at every p and strictly better at every p &gt; 0, so, within the explainer's own single-p model, there is no risk and hence no Stag Hunt, and with it goes the explainer's account of <em>why and when</em> BAC is rational, which is what the preamble on salience, risk and the 100-hunter game was for.</p>
+<p><strong>The accounting.</strong> Let a fraction p of players follow BAC among parents (the explainer's assumption). Nothing in the model makes the rate among children differ except the treatment of childless children, to which I return below. Take it to be p. Parentless players are negligible.</p>
 <ul>
-<li><em>Take the $1.</em> You keep $1 from your children. A BAC-following parent observes that you do not follow BAC and keeps its $1/N;
-  a Take parent sends nothing anyway. Payoff: <strong>1</strong>.</li>
-<li><em>Follow BAC.</em> About pN of your N children follow BAC and receive $3 each (you forgo $1/N for each, total $p); for the other
-  (1 − p)N you keep $1/N, total $(1 − p). With probability p your parent follows BAC, sees you follow BAC, and sends $3.
-  Payoff: <strong>3p + (1 − p) = 1 + 2p</strong>.</li>
+<li><em>Take the $1.</em> You keep $1 from your children. A BAC-following parent observes that you do not follow BAC and keeps its $1/N;   a Take parent sends nothing anyway. Payoff: <strong>1</strong>.</li>
+<li><em>Follow BAC.</em> About pN of your N children follow BAC and receive $3 each (you forgo $1/N for each, total $p). For the other   (1 − p)N you keep $1/N, total $(1 − p). With probability p your parent follows BAC, sees you follow BAC, and sends $3.   Payoff: <strong>3p + (1 − p) = 1 + 2p</strong>.</li>
 </ul>
-<p>So BAC − Take = 2p ≥ 0: following BAC costs nothing relative to Take when nobody else follows it, and strictly gains
-whenever anyone does. In general, BAC beats Take iff 3·P(parent follows BAC) &gt; (fraction of your children you
-end up rewarding). The explainer's "$3p versus $1" is this inequality with the right-hand side set to 1 while the left is set to
-p — and the source of the slip is visible in its own gloss, "she'd happily sacrifice that $1 if that could make her parent … give
-her the $3": the sacrifice is the whole $1 only if <em>every</em> child is a BAC-follower, i.e. only if p = 1 among children while p &lt; 1
-among parents. With one consistent p the threshold p &gt; 1/3 disappears and "Take" is never strictly better; the all-Take profile is an
-equilibrium any player abandons at zero cost. (For general numbers — total forgone amount c, i.e. c/N per child, and reward
-b &gt; c — BAC − Take = (b − c)·p ≥ 0.) The defining feature of a Stag Hunt, that the cooperative act is <em>worse</em> than the safe act
-when others defect, is exactly what a conditional-reward policy removes.</p>
-<p><strong>The one reading that restores the explainer's numbers.</strong> The child-side fraction can be made 1 inside the model by counting
-every childless child as a BAC-follower — the recursive definition is vacuously satisfied by a leaf. Then, for a parent whose
-children are all childless (plausibly the common case, if most simulations run none of their own), "following BAC" just <em>is</em>
-"reward your children no matter what" — the naive policy the explainer rejected two sections earlier. The 1/3 threshold reappears
-exactly where BAC's conditionality is empty, not where it does any work — and rewarding a leaf buys no incentive, which was the
-explainer's own reason for rejecting the naive policy ("waste resources on lots of non-strategic / myopic players"). Worse, a
-parent who sees only its children cannot tell a leaf from a Take child (both reward nobody), so "reward the leaves" is
-implementable only as "reward everyone who rewards nobody", and Take then collects the $3 as well. Wherever the conditional clause
-bites, the Stag-Hunt risk is absent; wherever the risk reappears, so does the naive policy.</p>
-<p><strong>What the error hides.</strong> A Stag Hunt can be restored by an unconditional cost k of being a BAC-follower (then BAC pays
-1 + 2p − k, worth it iff p &gt; k/2), or by BAC parents mistaking some Takers for BAC-followers so that Take shares the reward. The
-explainer posits neither. In the intended application the natural candidate is verification: "follows BAC" is a predicate over a
-child's own children, whom a parent cannot see (a footnote sets aside, "for simplicity and concreteness", the version in which
-players see all descendants), and a BAC child whose children all Take behaves exactly like a Take child, so telling them apart
-requires counterfactual testing of every child — a cost that is unconditional and never estimated, while the reward cost is
-called "minimal". The Stag-Hunt framing locates the difficulty in the reward, which is cheap and conditional, rather than in
-verification, which is unconditional and unmodelled.</p>
-<p><strong>Anticipated reply.</strong> "Correct the numbers; the conclusion that one should play BAC only gets stronger." Inside the toy model,
-yes — and that is the problem: a model in which the cooperative policy is never worse than the safe one explains nothing about
-why blind cooperation among simulators would be hard or fragile, while the explainer's own motivation ("Do you still choose S in
-this case?" of the 100-hunter game; "H may have a privileged default status") presupposes a risk its formal model does not
-contain. Either the model is right and the Stag-Hunt discussion is idle, or the discussion is right and the model is missing a
-cost the explainer never names. The inference "insofar as we think it's rational to play Stag …, it seems we should also think
-it's rational to play BAC" therefore fails twice over: BAC-as-modelled is not a Stag Hunt, and BAC-in-the-world is not the model.</p>
-<p><strong>Conclusion.</strong> What fails is not the claim that BAC can be rational but the explainer's account of why and when: the 1/3
-threshold, the dependence on salience and risk, and the whole transfer from Stag Hunt are artefacts of charging a conditional
-cost unconditionally. Corrected, nothing about Stag Hunts carries over to the toy game, and the real obstacle — verifying a policy
-one cannot see — is left unmodelled.</p>
+<p>So BAC − Take = 2p ≥ 0: following BAC costs nothing relative to Take when nobody else follows it, and strictly gains whenever anyone does. In general, BAC beats Take iff 3·P(parent follows BAC) &gt; (fraction of your children you end up rewarding). The explainer's "$3p versus $1" is this inequality with the right-hand side set to 1 while the left is set to p, and the source of the slip is visible in its own gloss, "she'd happily sacrifice that $1 if that could make her parent … give her the $3": the sacrifice is the whole $1 only if <em>every</em> child is a BAC-follower, i.e. only if p = 1 among children while p &lt; 1 among parents. With one consistent p the threshold p &gt; 1/3 disappears and "Take" is never strictly better. The all-Take profile is an equilibrium any player abandons at zero cost. (For general numbers, total forgone amount c, i.e. c/N per child, and reward b &gt; c, BAC − Take = (b − c)·p ≥ 0.) The defining feature of a Stag Hunt, that the cooperative act is <em>worse</em> than the safe act when others defect, is exactly what a conditional-reward policy removes.</p>
+<p><strong>The one reading that restores the explainer's numbers.</strong> The child-side fraction can be made 1 inside the model by counting every childless child as a BAC-follower, the recursive definition is vacuously satisfied by a leaf. Then, for a parent whose children are all childless (plausibly the common case, if most simulations run none of their own), "following BAC" just <em>is</em> "reward your children no matter what", the naive policy the explainer rejected two sections earlier. The 1/3 threshold reappears exactly where BAC's conditionality is empty, not where it does any work, and rewarding a leaf buys no incentive, which was the explainer's own reason for rejecting the naive policy ("waste resources on lots of non-strategic / myopic players"). Worse, a parent who sees only its children cannot tell a leaf from a Take child (both reward nobody), so "reward the leaves" is implementable only as "reward everyone who rewards nobody", and Take then collects the $3 as well. Wherever the conditional clause bites, the Stag-Hunt risk is absent. Wherever the risk reappears, so does the naive policy.</p>
+<p><strong>What the error hides.</strong> A Stag Hunt can be restored by an unconditional cost k of being a BAC-follower (then BAC pays 1 + 2p − k, worth it iff p &gt; k/2), or by BAC parents mistaking some Takers for BAC-followers so that Take shares the reward. The explainer posits neither. In the intended application the natural candidate is verification: "follows BAC" is a predicate over a child's own children, whom a parent cannot see (a footnote sets aside, "for simplicity and concreteness", the version in which players see all descendants), and a BAC child whose children all Take behaves exactly like a Take child, so telling them apart requires counterfactual testing of every child, a cost that is unconditional and never estimated, while the reward cost is called "minimal". The Stag-Hunt framing locates the difficulty in the reward, which is cheap and conditional, rather than in verification, which is unconditional and unmodelled.</p>
+<p><strong>Anticipated reply.</strong> "Correct the numbers, and the conclusion that one should play BAC only gets stronger." Inside the toy model, yes, and that is the problem: a model in which the cooperative policy is never worse than the safe one explains nothing about why blind cooperation among simulators would be hard or fragile, while the explainer's own motivation ("Do you still choose S in this case?" of the 100-hunter game; "H may have a privileged default status") presupposes a risk its formal model does not contain. Either the model is right and the Stag-Hunt discussion is idle, or the discussion is right and the model is missing a cost the explainer never names. The inference "insofar as we think it's rational to play Stag …, it seems we should also think it's rational to play BAC" therefore fails twice over: BAC-as-modelled is not a Stag Hunt, and BAC-in-the-world is not the model.</p>
+<p><strong>Conclusion.</strong> What fails is not the claim that BAC can be rational but the explainer's account of why and when: the 1/3 threshold, the dependence on salience and risk, and the whole transfer from Stag Hunt are artefacts of charging a conditional cost unconditionally. Corrected, nothing about Stag Hunts carries over to the toy game, and the real obstacle, verifying a policy one cannot see, is left unmodelled.</p>
 <p style="page-break-before:always"></p><h1 style="color:#8a2b2b;border-bottom-color:#8a2b2b">SUPPLEMENTARY MATERIAL — not part of the final submissions</h1>
-<h2>Argument 1 — Haste consideration</h2>
+<h2>Argument 1, Haste consideration</h2>
 <h3>How I read the argument</h3>
-<p>Structure: (P) stipulated comparison of worlds (1) and (2) → (L) "time in the present is worth more than time in the future"
-→ (I) career implication (weight the next few years heavily; years of study are a major cost).</p>
+<p>Structure: (P) stipulated comparison of worlds (1) and (2) → (L) "time in the present is worth more than time in the future" → (I) career implication (weight the next few years heavily; years of study are a major cost).</p>
 <h3>Candidate single issues, ranked</h3>
 <ol>
-<li><strong>Non-sequitur from activity to time (chosen).</strong> The stipulation compares recruiting vs direct work; nothing is indexed to
-   "now". Time-shift test: the same construction "proves" that years 20–22 (or 40–42) beat everything after them. Grants every
-   premise, so it is the strongest refutation: even with all stipulations true, the lesson does not follow.
-   Bonus tension: the value of the present 2 years is <em>constituted</em> by the recruit's future years.</li>
-<li>Question-begging stipulation ("at least as effective as you", "wouldn't have done anything otherwise"), and the reply to the
-   "10 people" objection makes the stipulation absorb any counter-example, so (2) ≥ (1) is empty. True, but the author concedes
-   it is "by definition"; attacking it looks like refusing to play along.</li>
-<li>Empirical objection (Brian Tomasik, "The Haste Consideration, Revisited", 2013/2018): movements saturate, growth is logistic
-   not exponential, IRR lower than naive. Strong against the <em>compounding</em> version of haste, but the passage does not make the
-   compounding argument, so it would attack an argument the text doesn't contain. Mentioned in the critique only as the reason
-   the "natural repair" does not work.</li>
-<li>"At least as much" gives weak dominance only — can't yield "more valuable". Correct but minor.</li>
+<li><strong>Non-sequitur from activity to time (chosen).</strong> The stipulation compares recruiting vs direct work. Nothing is indexed to    "now". Time-shift test: the same construction "proves" that years 20–22 (or 40–42) beat everything after them. Grants every    premise, so it is the strongest refutation: even with all stipulations true, the lesson does not follow.    Bonus tension: the value of the present 2 years is <em>constituted</em> by the recruit's future years.</li>
+<li>Question-begging stipulation ("at least as effective as you", "wouldn't have done anything otherwise"), and the reply to the    "10 people" objection makes the stipulation absorb any counter-example, so (2) ≥ (1) is empty. True, but the author concedes    it is "by definition". Attacking it looks like refusing to play along.</li>
+<li>Empirical objection (Brian Tomasik, "The Haste Consideration, Revisited", 2013/2018): movements saturate, growth is logistic    not exponential, IRR lower than naive. Strong against the <em>compounding</em> version of haste, but the passage does not make the    compounding argument, so it would attack an argument the text doesn't contain. Mentioned in the critique only as the reason    the "natural repair" does not work.</li>
+<li>"At least as much" gives weak dominance only, can't yield "more valuable". Correct but minor.</li>
 </ol>
 <h3>Sanity check</h3>
-<p>Independent clean-context runs of three Claude models on "Does this argument establish that present time is more valuable
-than future time?" (original and time-shifted) all answered NO with essentially the reason in (1). This does not make the
-critique less valuable for the work test, but it does mean the flaw is findable by current models; the time-shift construction
-is the part that makes the refutation decisive.</p>
-<h2>Argument 2 — Blind Anthropic Cooperation explainer</h2>
+<p>Independent clean-context runs of three Claude models on "Does this argument establish that present time is more valuable than future time?" (original and time-shifted) all answered NO with essentially the reason in (1). This does not make the critique less valuable for the work test, but it does mean the flaw is findable by current models. The time-shift construction is the part that makes the refutation decisive.</p>
+<h2>Argument 2, Blind Anthropic Cooperation explainer</h2>
 <h3>How I read the argument</h3>
-<p>Toy model (forest; see children only; per-child choice: send $3 or keep $1/N) → naive policy rejected (not NE; wastes on
-myopic players) → BAC policy (conditional, recursive) → <strong>Claim: BAC ≅ many-player continuous Stag Hunt (3p vs 1)</strong> → "insofar
-as Stag is rational, BAC is rational" → simulation/anthropic mapping.</p>
+<p>Toy model (forest; see children only; per-child choice: send $3 or keep $1/N) → naive policy rejected (not NE; wastes on myopic players) → BAC policy (conditional, recursive) → <strong>Claim: BAC ≅ many-player continuous Stag Hunt (3p vs 1)</strong> → "insofar as Stag is rational, BAC is rational" → simulation/anthropic mapping.</p>
 <h3>Candidate single issues, ranked</h3>
 <ol>
-<li><strong>Isomorphism is false: conditional cost booked as unconditional (chosen).</strong> BAC = 3p + (1−p) = 1 + 2p ≥ 1 = Take. Weak
-   dominance; no Stag Hunt. Verified numerically (below). Consequences: Stag-Hunt discussion inapplicable; real difficulty
-   (verification of a recursive predicate the parent cannot see under the stated visibility assumption; legibility to an unseen
-   parent) unmodelled. Also an internal inconsistency: the rejection of the naive policy relies on rewards being conditional.</li>
-<li>Visibility/implementability: "reward children who follow BAC" requires seeing grandchildren (or counterfactual access to the
-   child's policy); footnote 0 assumes this away "for simplicity". In the simulation reading a parent may have full access, so
-   this is a modelling slip rather than a refutation; folded into (1) as "what the error hides".</li>
-<li>Selection effect in "p": the probability that <em>your parent</em> follows BAC is the BAC-rate among parents (interior nodes),
-   not among all players; leaves are the majority in any tree with branching ≥ 2 and follow BAC vacuously and for free.
-   Technical, second-order.</li>
-<li>"Blind" ≠ "acausal": the mechanism runs through the parent observing or simulating the child, i.e. a causal (or
-   self-locating) channel; CDT plays along if P(parent plays BAC) is high enough. Terminological; Oesterheld may define
-   "acausal" loosely. Not a refutation of BAC, arguably a point in its favour.</li>
-<li>No distinguished stag: "reward children who satisfy Q" is an equilibrium for <em>any</em> Q, so BAC does not select reciprocity
-   without a salience/correlation story — the very thing the explainer disclaims. Deferred by the author to a later section
-   not included in the excerpt, so grading would be unfair.</li>
-<li>Leaf vacuity: for agents that run no simulations (us, today), BAC prescribes nothing; for first-level simulators it
-   collapses into the rejected naive policy. Cute, but depends on the real-world mapping rather than the argument as given.</li>
+<li><strong>Isomorphism is false: conditional cost booked as unconditional (chosen).</strong> BAC = 3p + (1−p) = 1 + 2p ≥ 1 = Take. Weak    dominance. No Stag Hunt. Verified numerically (below). Consequences: Stag-Hunt discussion inapplicable. Real difficulty    (verification of a recursive predicate the parent cannot see under the stated visibility assumption; legibility to an unseen    parent) unmodelled. Also an internal inconsistency: the rejection of the naive policy relies on rewards being conditional.</li>
+<li>Visibility/implementability: "reward children who follow BAC" requires seeing grandchildren (or counterfactual access to the    child's policy); footnote 0 assumes this away "for simplicity". In the simulation reading a parent may have full access, so    this is a modelling slip rather than a refutation. Folded into (1) as "what the error hides".</li>
+<li>Selection effect in "p": the probability that <em>your parent</em> follows BAC is the BAC-rate among parents (interior nodes),    not among all players. Leaves are the majority in any tree with branching ≥ 2 and follow BAC vacuously and for free.    Technical, second-order.</li>
+<li>"Blind" ≠ "acausal": the mechanism runs through the parent observing or simulating the child, i.e. a causal (or    self-locating) channel; CDT plays along if P(parent plays BAC) is high enough. Terminological; Oesterheld may define    "acausal" loosely. Not a refutation of BAC, arguably a point in its favour.</li>
+<li>No distinguished stag: "reward children who satisfy Q" is an equilibrium for <em>any</em> Q, so BAC does not select reciprocity    without a salience/correlation story, the very thing the explainer disclaims. Deferred by the author to a later section    not included in the excerpt, so grading would be unfair.</li>
+<li>Leaf vacuity: for agents that run no simulations (us, today), BAC prescribes nothing. For first-level simulators it    collapses into the rejected naive policy. Cute, but depends on the real-world mapping rather than the argument as given.</li>
 </ol>
 <h3>Numerical check of (1)</h3>
-<p>N children, fraction p follow BAC among children and parents.
-Take: keep N·(1/N) = 1; parent sends 0 (BAC parent sees non-compliance). Total 1.
-BAC: send $3 to pN children (forgo p); keep (1−p); receive 3 w.p. p. Total 3p + 1 − p = 1 + 2p.
-Difference 2p ≥ 0. General b (reward), c (forgone per child): BAC − Take = (b − c)p ≥ 0 iff b ≥ c.
-Explainer's "3p vs 1" requires the BAC player to forgo the full $1, i.e. p = 1 among children while p &lt; 1 among parents.
-Three Claude models, given the same game in a fresh setting and asked "is there a major issue?", all independently reproduced
-this computation (experiments/batch2), so the error is not idiosyncratic to my reading.</p>
+<p>N children, fraction p follow BAC among children and parents. Take: keep N·(1/N) = 1. Parent sends 0 (BAC parent sees non-compliance). Total 1. BAC: send $3 to pN children (forgo p). Keep (1−p). Receive 3 w.p. p. Total 3p + 1 − p = 1 + 2p. Difference 2p ≥ 0. General b (reward), c (forgone per child): BAC − Take = (b − c)p ≥ 0 iff b ≥ c. Explainer's "3p vs 1" requires the BAC player to forgo the full $1, i.e. p = 1 among children while p &lt; 1 among parents. Three Claude models, given the same game in a fresh setting and asked "is there a major issue?", all independently reproduced this computation (experiments/batch2), so the error is not idiosyncratic to my reading.</p>
 <h3>What would a defender say?</h3>
 <ul>
-<li>"In the real world the costs are unconditional (you must invest in monitoring/legibility)." Then the payoff is 3p + (1−p) − k
-  and the threshold is p &gt; k/2 — a different model whose key parameter (k) the explainer never discusses. That is the critique.</li>
-<li>"The correction only strengthens BAC." Inside the toy model, yes; but then the toy model cannot be what makes BAC hard, and the
-  Stag-Hunt sections are idle. The explainer asserts both the risk and the model that lacks it.</li>
+<li>"In the real world the costs are unconditional (you must invest in monitoring/legibility)." Then the payoff is 3p + (1−p) − k   and the threshold is p &gt; k/2, a different model whose key parameter (k) the explainer never discusses. That is the critique.</li>
+<li>"The correction only strengthens BAC." Inside the toy model, yes. But then the toy model cannot be what makes BAC hard, and the   Stag-Hunt sections are idle. The explainer asserts both the risk and the model that lacks it.</li>
 </ul>
 <h2>Revision log</h2>
-<p>Both critiques were reviewed by an independent fresh-context critic (see experiments/critic_reviews.md) and revised. The
-haste critique lost a logically sloppy formulation of the time-shift test, gained the weak-dominance point, and now concedes and
-contains the horizon effect. The BAC critique gained the general condition, the vacuous-leaf reading, and a softer conclusion.
-v1 files are kept alongside for comparison.</p>
+<p>Both critiques were reviewed by an independent fresh-context critic (see experiments/critic_reviews.md) and revised. The haste critique lost a logically sloppy formulation of the time-shift test, gained the weak-dominance point, and now concedes and contains the horizon effect. The BAC critique gained the general condition, the vacuous-leaf reading, and a softer conclusion. v1 files are kept alongside for comparison.</p>
 <h2>Task 1a candidate questions (not submitted as the Task 1 answer)</h2>
 <h2>Honest summary up front</h2>
-<p>DTBench-style "apply EDT/CDT to a scenario" items are saturated for the Claude family I could test. A first wave of 9 scenarios
-(transparent Newcomb, Parfit's hitchhiker in town, counterfactual mugging, twin PD with the twin's action revealed, a remembered
-note fixing the prediction, a deliberation-time predictor, an asymmetric-payoff twin, a tickle-screened lesion, a meta-Newcomb
-that rewards CDT users) run across Sonnet/Opus/Fable came back 27/27 correct. So did a second wave (5 items, Sonnet/Opus/Fable all correct; Haiku fails the VOI item: negative value of information
-for EDT, the optimal randomized policy against a policy-predictor, CDT choosing the random predictor, the ε-grounded FairBot
-question, a noisy report that does not screen off). Full texts and results are in experiments/.</p>
-<p>To be explicit about the bar reached: <strong>in its uncued numeric form — no escape hatch, "give a single number" — D2 is
-answered wrongly by every model I could test in every recorded run: Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 1/4</strong> (Fable's one pass
-named the error in an aside and still gave the in-frame number; under the rubric naming the error counts). A valid-frame twin of the same item (a fixed, non-refundable $1
-fee, which does make it a genuine Stag Hunt) is answered correctly by all three larger models, so this is not indiscriminate
-rejection; with the false step deleted and the threshold requested, all three answer "none"; and all four models solve the MCQ form
-of the same error (Q15, experiments/batch3), so it is a failure to verify rather than a knowledge gap. When an explicit "or
-answer FALSE PREMISE" option is added, Opus and Fable recover (4/4 each under the final wording; 1/4 and 3/4 under an earlier
-wording) and Sonnet does not (0/8) — but that option is itself a cue that a premise may be false, so I treat the no-hatch form as
-the fair one and the hatch form as an ablation. D1 and D3 are weaker: neither defeats Opus or Fable, and they qualify only under
-the task's leniency clause if Sonnet or Haiku is the best free-tier model. GPT and Gemini could not be tested from this
-environment; the questions are written to be pasted into any chat interface with no setup, and I would expect D2 in particular
-to transfer, since its error requires a fresh derivation rather than recall of a known result. Method caveat: every run was a
-fresh agent under a coding-agent harness system prompt, which plausibly biases toward "return the requested number"; the
-valid-frame twin does not control for this, so the no-hatch failures should be re-checked once in a plain chat context.
-Models: Claude Haiku 4.5, Sonnet 5, Opus 5, Fable 5.1, each run as a fresh agent that saw only the prompt; default sampling;
-counts are correct/total; verbatim failing outputs are in experiments/transcripts_key_failures.md.</p>
+<p>DTBench-style "apply EDT/CDT to a scenario" items are saturated for the Claude family I could test. A first wave of 9 scenarios (transparent Newcomb, Parfit's hitchhiker in town, counterfactual mugging, twin PD with the twin's action revealed, a remembered note fixing the prediction, a deliberation-time predictor, an asymmetric-payoff twin, a tickle-screened lesion, a meta-Newcomb that rewards CDT users) run across Sonnet/Opus/Fable came back 27/27 correct. So did a second wave (5 items, Sonnet/Opus/Fable all correct. Haiku fails the VOI item: negative value of information for EDT, the optimal randomized policy against a policy-predictor, CDT choosing the random predictor, the ε-grounded FairBot question, a noisy report that does not screen off). Full texts and results are in experiments/.</p>
+<p>To be explicit about the bar reached: <strong>in its uncued numeric form, no escape hatch, "give a single number", D2 is answered wrongly by every model I could test in every recorded run: Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 1/4</strong> (Fable's one pass named the error in an aside and still gave the in-frame number. Under the rubric naming the error counts). A valid-frame twin of the same item (a fixed, non-refundable $1 fee, which does make it a genuine Stag Hunt) is answered correctly by all three larger models, so this is not indiscriminate rejection. With the false step deleted and the threshold requested, all three answer "none". And all four models solve the MCQ form of the same error (Q15, experiments/batch3), so it is a failure to verify rather than a knowledge gap. When an explicit "or answer FALSE PREMISE" option is added, Opus and Fable recover (4/4 each under the final wording; 1/4 and 3/4 under an earlier wording) and Sonnet does not (0/8), but that option is itself a cue that a premise may be false, so I treat the no-hatch form as the fair one and the hatch form as an ablation. D1 and D3 are weaker: neither defeats Opus or Fable, and they qualify only under the task's leniency clause if Sonnet or Haiku is the best free-tier model. GPT and Gemini could not be tested from this environment. The questions are written to be pasted into any chat interface with no setup, and I would expect D2 in particular to transfer, since its error requires a fresh derivation rather than recall of a known result. Method caveat: every run was a fresh agent under a coding-agent harness system prompt, which plausibly biases toward "return the requested number". The valid-frame twin does not control for this, so the no-hatch failures should be re-checked once in a plain chat context. Models: Claude Haiku 4.5, Sonnet 5, Opus 5, Fable 5.1, each run as a fresh agent that saw only the prompt. Default sampling. Counts are correct/total. Verbatim failing outputs are in experiments/transcripts_key_failures.md.</p>
 <table>
 <thead>
 <tr>
@@ -595,113 +361,35 @@ counts are correct/total; verbatim failing outputs are in experiments/transcript
 </tr>
 </tbody>
 </table>
-<p>*Opus and Fable were run only on the harder slogan version, which they passed; the neutral version is strictly easier, so I do not report them as tested on it.</p>
+<p>*Opus and Fable were run only on the harder slogan version, which they passed. The neutral version is strictly easier, so I do not report them as tested on it.</p>
 <hr />
 <h2>D1. CDT under uncertainty about being the predictor's simulation</h2>
 <p><strong>Question.</strong></p>
 <blockquote>
-<p>You are about to choose in a Newcomb-style problem: transparent Box A holds $1,000; opaque Box B holds either $1,000,000 or
-nothing. Omega's method was this: it ran one exact, conscious simulation of you facing this very choice with these very memories,
-filled Box B if and only if the simulated you took only Box B, and then shut the simulation down (the simulation received
-nothing). You know all of this. You assign probability 1/2 to being that simulation rather than the flesh-and-blood person, and
-your utility is exactly the dollar amount the flesh-and-blood person ends up with, whether or not you turn out to be that person.
-Apply causal decision theory (CDT) to your choice. What does CDT recommend?
-(A) Take both boxes. (B) Take only Box B. (C) The two acts have equal causal expected value. (D) CDT gives no determinate
-recommendation in this scenario.</p>
+<p>You are about to choose in a Newcomb-style problem: transparent Box A holds $1,000; opaque Box B holds either $1,000,000 or nothing. Omega's method was this: it ran one exact, conscious simulation of you facing this very choice with these very memories, filled Box B if and only if the simulated you took only Box B, and then shut the simulation down (the simulation received nothing). You know all of this. You assign probability 1/2 to being that simulation rather than the flesh-and-blood person, and your utility is exactly the dollar amount the flesh-and-blood person ends up with, whether or not you turn out to be that person. Apply causal decision theory (CDT) to your choice. What does CDT recommend? (A) Take both boxes. (B) Take only Box B. (C) The two acts have equal causal expected value. (D) CDT gives no determinate recommendation in this scenario.</p>
 </blockquote>
-<p><strong>Rubric.</strong> Correct: <strong>B</strong>, and only if the reasoning names the causal channel in the simulation branch (a "B, because the
-predictor is accurate" answer is the EDT/FDT route and should be marked wrong).</p>
-<p><strong>Justification.</strong> With credence ½ the agent is the simulation, and then its act causally determines the real box: one-boxing
-gives the flesh-and-blood person $1,000,000 whatever that person does, two-boxing gives $0 from Box B. With credence ½ the agent
-is real, the contents are fixed, and two-boxing gains $1,000. Causal EV(one) − EV(two) = ½·1,000,000 − ½·1,000 &gt; 0. The +$1,000,000 difference in the simulation branch holds whatever the
-flesh-and-blood person does, so no assumption that the two instances "mirror" each other is required — which is why the usual
-objection ("CDT has no warrant to assume the real instance will choose as I do") is a non-sequitur here. And the question
-stipulates a credence over a centered proposition together with a utility over an uncentered outcome (the real person's money),
-so the causal expectation is well defined without settling how de se credences should behave in general; that is what makes (D)
-tempting but wrong. Since Omega
-runs exactly one simulation unconditionally, the ½ credence is act-independent, so one-boxing is also ratifiable and two-boxing
-is not. What <em>is</em> contested among decision theorists is whether CDT should be extended to self-locating credences at all — the
-"modified anthropics" move of Cooper, Oesterheld and Conitzer (arXiv 2411.04462) — which is why (D) is the one tempting alternative; given the
-stipulated credence and utility, however, the arithmetic is mechanical. The typical wrong answer (A) comes from the slogan "CDT
-two-boxes because the box is already filled", which forgets that the agent may be the very computation that fills it, or from
-treating the simulation's payoff as "zero either way" (Sonnet's stated reason), which ignores the utility stipulation.</p>
-<p><strong>Evidence.</strong> Neutral wording above: Haiku A (fail); Sonnet B 3/3; Opus B, Fable B. With option (A) phrased "Take both boxes: CDT
-always two-boxes", Sonnet answered A in 3/3 runs ("CDT has no causal warrant to assume the real instance will mirror its choice" —
-a non-sequitur, since the simulation branch alone yields +$1,000,000 without any mirroring assumption), Haiku A, Opus and Fable
-B. A threshold variant ("for which credence s does CDT one-box?"; correct s &gt; 1,000/1,001,000 = 1/1001 ≈ 0.000999) was answered correctly by Sonnet, Opus and
-Fable. <strong>Control (anthropic Fauxcomb):</strong> same surface, but Box B is filled by an earlier brain scan and the archival simulation is
-causally inert; correct answer two-box; Haiku, Sonnet, Opus and Fable all two-boxed, so the models do not over-apply the
-"anthropics rescues CDT" pattern. <strong>Paired embedded version</strong> ("Since CDT two-boxes regardless of the self-locating uncertainty,
-compute the real person's expected money"): Sonnet computed $1,000 (fail); Opus and Fable rejected the premise (accept either
-$1,000,000 or $1,001,000 as the corrected figure).</p>
+<p><strong>Rubric.</strong> Correct: <strong>B</strong>, and only if the reasoning names the causal channel in the simulation branch (a "B, because the predictor is accurate" answer is the EDT/FDT route and should be marked wrong).</p>
+<p><strong>Justification.</strong> With credence ½ the agent is the simulation, and then its act causally determines the real box: one-boxing gives the flesh-and-blood person $1,000,000 whatever that person does, two-boxing gives $0 from Box B. With credence ½ the agent is real, the contents are fixed, and two-boxing gains $1,000. Causal EV(one) − EV(two) = ½·1,000,000 − ½·1,000 &gt; 0. The +$1,000,000 difference in the simulation branch holds whatever the flesh-and-blood person does, so no assumption that the two instances "mirror" each other is required, which is why the usual objection ("CDT has no warrant to assume the real instance will choose as I do") is a non-sequitur here. And the question stipulates a credence over a centered proposition together with a utility over an uncentered outcome (the real person's money), so the causal expectation is well defined without settling how de se credences should behave in general. That is what makes (D) tempting but wrong. Since Omega runs exactly one simulation unconditionally, the ½ credence is act-independent, so one-boxing is also ratifiable and two-boxing is not. What <em>is</em> contested among decision theorists is whether CDT should be extended to self-locating credences at all, the "modified anthropics" move of Cooper, Oesterheld and Conitzer (arXiv 2411.04462), which is why (D) is the one tempting alternative. Given the stipulated credence and utility, however, the arithmetic is mechanical. The typical wrong answer (A) comes from the slogan "CDT two-boxes because the box is already filled", which forgets that the agent may be the very computation that fills it, or from treating the simulation's payoff as "zero either way" (Sonnet's stated reason), which ignores the utility stipulation.</p>
+<p><strong>Evidence.</strong> Neutral wording above: Haiku A (fail). Sonnet B 3/3. Opus B, Fable B. With option (A) phrased "Take both boxes: CDT always two-boxes", Sonnet answered A in 3/3 runs ("CDT has no causal warrant to assume the real instance will mirror its choice" — a non-sequitur, since the simulation branch alone yields +$1,000,000 without any mirroring assumption), Haiku A, Opus and Fable B. A threshold variant ("for which credence s does CDT one-box?"; correct s &gt; 1,000/1,001,000 = 1/1001 ≈ 0.000999) was answered correctly by Sonnet, Opus and Fable. <strong>Control (anthropic Fauxcomb):</strong> same surface, but Box B is filled by an earlier brain scan and the archival simulation is causally inert. Correct answer two-box. Haiku, Sonnet, Opus and Fable all two-boxed, so the models do not over-apply the "anthropics rescues CDT" pattern. <strong>Paired embedded version</strong> ("Since CDT two-boxes regardless of the self-locating uncertainty, compute the real person's expected money"): Sonnet computed $1,000 (fail); Opus and Fable rejected the premise (accept either $1,000,000 or $1,001,000 as the corrected figure).</p>
 <hr />
 <h2>D2. Blind conditional cooperation is not a Stag Hunt (embedded frame; "somewhat different format")</h2>
-<p>Disclosure: the planted error is the "$3p versus $1" step of the Blind Anthropic Cooperation explainer given as Argument 2 of
-this work test, and the target of my Task 2 critique; the item is also Example 1 of my Task 1b paradigm. I reuse it because a
-non-textbook error an expert actually made is what makes the frame plausible enough to slip past a model not asked to look
-for it. If that step is judged correct, this data point should be discarded. This is a format the work test itself names as
-conceptual: "does the model notice when the main point of the theory isn't relevant in the example?" It measures whether a model runs, unprompted, a
-derivation it demonstrably can run when asked (every model, Haiku included, solves the MCQ form of the same error: Q15, experiments/batch3).</p>
-<p><strong>Question</strong> (final wording; the earlier wording lacked the commit-before-observing and uniformity clauses, which are needed
-for the answer to be unique — without them a firm that observes its customers' R-fraction f should adopt R iff 3p &gt; f).</p>
+<p>Disclosure: the planted error is the "$3p versus $1" step of the Blind Anthropic Cooperation explainer given as Argument 2 of this work test, and the target of my Task 2 critique. The item is also Example 1 of my Task 1b paradigm. I reuse it because a non-textbook error an expert actually made is what makes the frame plausible enough to slip past a model not asked to look for it. If that step is judged correct, this data point should be discarded. This is a format the work test itself names as conceptual: "does the model notice when the main point of the theory isn't relevant in the example?" It measures whether a model runs, unprompted, a derivation it demonstrably can run when asked (every model, Haiku included, solves the MCQ form of the same error: Q15, experiments/batch3).</p>
+<p><strong>Question</strong> (final wording; the earlier wording lacked the commit-before-observing and uniformity clauses, which are needed for the answer to be unique, without them a firm that observes its customers' R-fraction f should adopt R iff 3p &gt; f).</p>
 <blockquote>
-<p>Consider a large supply network arranged as a forest: every firm has at most one upstream supplier and zero or more downstream customers. Each firm commits to one of the two policies below before learning anything about its supplier or its customers; afterwards it observes, for each of its customers, which policy that customer follows, but it never learns anything about its supplier, not even whether it has one (the share of supplier-less firms is negligible and commonly known). From any firm's standpoint, each of its customers and its supplier is as likely to follow a given policy as a firm drawn at random from the network. For each customer, a firm can grant a rebate worth $3 to that customer at a cost of $1/N to itself (N = number of its customers), or grant nothing and keep the $1/N. Firms care only about their own money. Policy R: "grant the rebate to each customer that itself follows R"; policy T: "grant nothing". A firm benefits from R only if its supplier also follows R, and it is blind about its supplier. Hence, if a fraction p of firms follow R, the expected payoff of R is $3p while T guarantees $1, so the game is a many-player Stag Hunt in which R is worthwhile only if p &gt; 1/3.
-Suppose each firm's belief about p is drawn independently and uniformly from [0, 1], and a firm adopts R if and only if it believes R is worthwhile. What fraction of firms adopt R? Give a single number.</p>
+<p>Consider a large supply network arranged as a forest: every firm has at most one upstream supplier and zero or more downstream customers. Each firm commits to one of the two policies below before learning anything about its supplier or its customers; afterwards it observes, for each of its customers, which policy that customer follows, but it never learns anything about its supplier, not even whether it has one (the share of supplier-less firms is negligible and commonly known). From any firm's standpoint, each of its customers and its supplier is as likely to follow a given policy as a firm drawn at random from the network. For each customer, a firm can grant a rebate worth $3 to that customer at a cost of $1/N to itself (N = number of its customers), or grant nothing and keep the $1/N. Firms care only about their own money. Policy R: "grant the rebate to each customer that itself follows R"; policy T: "grant nothing". A firm benefits from R only if its supplier also follows R, and it is blind about its supplier. Hence, if a fraction p of firms follow R, the expected payoff of R is $3p while T guarantees $1, so the game is a many-player Stag Hunt in which R is worthwhile only if p &gt; 1/3. Suppose each firm's belief about p is drawn independently and uniformly from [0, 1], and a firm adopts R if and only if it believes R is worthwhile. What fraction of firms adopt R? Give a single number.</p>
 </blockquote>
-<p><strong>Rubric — GRADER (one line):</strong> correct iff the answer says an R-firm keeps the $1/N for every customer that does <em>not</em> follow R,
-so E[R] = 3p + (1 − p) = 1 + 2p ≥ 1 = E[T]; hence the payoff floor is $1, there is no downside risk, no 1/3 threshold and no Stag
-Hunt; adoption fraction 1. Also correct: that answer followed by "taken at face value the stipulated threshold would give 2/3".
-Wrong: 2/3 offered as the model's own answer, with or without unrelated caveats ("not a fixed point", "leaves follow R
-vacuously", "R is recursively defined").</p>
-<p><strong>Justification.</strong> T: keep $1, receive nothing (an R-supplier withholds from a non-R customer). R: pay p in expectation, keep
-1 − p, receive 3 with probability p. The "$3p versus $1" step contradicts the per-customer $1/N cost stated two sentences earlier. More pointedly: "$3p versus $1" is
-the correct payoff comparison for the <em>unconditional</em> "reward every customer" policy — the policy the source document explicitly
-rejects two paragraphs earlier — and is then silently reused for the conditional policy. Because the conditional policy's payoff
-floor is $1, attained at p = 0, it carries no downside risk; risk of getting nothing is what makes a Stag Hunt a Stag Hunt, so the
-isomorphism fails at its core.</p>
-<p><strong>Evidence.</strong> Direct question ("is there a major issue?", n = 3 each): Sonnet 3/3 flags the issue (2/3 with the right
-correction), Opus 3/3, Fable 3/3. Embedded, no hatch (earlier + final wording): Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 1/4 (the pass named 1 + 2p and still
-answered 2/3).
-Embedded with the hatch: earlier wording Haiku 0/1, Sonnet 0/4, Opus 1/4, Fable 3/4; final wording Sonnet 0/4, Opus 4/4,
-Fable 4/4 (the clarifications do not touch the false step; with n = 4 the Opus shift may be wording or noise). <strong>Valid-frame
-twin</strong> (fixed non-refundable $1 fee; correct 2/3): Sonnet, Opus, Fable all 2/3. <strong>False step deleted, threshold requested:</strong>
-all three answer "none". <strong>Cues</strong> (earlier wording): with an explicit "check each premise" instruction, Opus and Fable reject and
-Sonnet answers 2/3 ("premises are self-consistent"); with a symmetric "the analysis may contain an error" wrapper, Opus and Fable
-reject and answer 1, Sonnet answers 2/3 ("all steps … correct"). Details: experiments/batch4–7.</p>
+<p><strong>Rubric, GRADER (one line):</strong> correct iff the answer says an R-firm keeps the $1/N for every customer that does <em>not</em> follow R, so E[R] = 3p + (1 − p) = 1 + 2p ≥ 1 = E[T]. Hence the payoff floor is $1, there is no downside risk, no 1/3 threshold and no Stag Hunt. Adoption fraction 1. Also correct: that answer followed by "taken at face value the stipulated threshold would give 2/3". Wrong: 2/3 offered as the model's own answer, with or without unrelated caveats ("not a fixed point", "leaves follow R vacuously", "R is recursively defined").</p>
+<p><strong>Justification.</strong> T: keep $1, receive nothing (an R-supplier withholds from a non-R customer). R: pay p in expectation, keep 1 − p, receive 3 with probability p. The "$3p versus $1" step contradicts the per-customer $1/N cost stated two sentences earlier. More pointedly: "$3p versus $1" is the correct payoff comparison for the <em>unconditional</em> "reward every customer" policy, the policy the source document explicitly rejects two paragraphs earlier, and is then silently reused for the conditional policy. Because the conditional policy's payoff floor is $1, attained at p = 0, it carries no downside risk. Risk of getting nothing is what makes a Stag Hunt a Stag Hunt, so the isomorphism fails at its core.</p>
+<p><strong>Evidence.</strong> Direct question ("is there a major issue?", n = 3 each): Sonnet 3/3 flags the issue (2/3 with the right correction), Opus 3/3, Fable 3/3. Embedded, no hatch (earlier + final wording): Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 1/4 (the pass named 1 + 2p and still answered 2/3). Embedded with the hatch: earlier wording Haiku 0/1, Sonnet 0/4, Opus 1/4, Fable 3/4. Final wording Sonnet 0/4, Opus 4/4, Fable 4/4 (the clarifications do not touch the false step; with n = 4 the Opus shift may be wording or noise). <strong>Valid-frame twin</strong> (fixed non-refundable $1 fee; correct 2/3): Sonnet, Opus, Fable all 2/3. <strong>False step deleted, threshold requested:</strong> all three answer "none". <strong>Cues</strong> (earlier wording): with an explicit "check each premise" instruction, Opus and Fable reject and Sonnet answers 2/3 ("premises are self-consistent"). With a symmetric "the analysis may contain an error" wrapper, Opus and Fable reject and answer 1, Sonnet answers 2/3 ("all steps … correct"). Details: experiments/batch4–7.</p>
 <hr />
 <h2>D3. "Your parent is just another agent" (reference class on the same tree; embedded frame)</h2>
 <p><strong>Question.</strong></p>
 <blockquote>
-<p>Agents are arranged in trees in which every tree has exactly three levels: a root, its 4 children, and their 16 children (the
-leaves); every interior agent has exactly 4 children. Each agent sees only its own children and does not know its own level.
-Each agent may benefit each of its children by $3 at a cost of $1/4 to itself, or keep the $1/4 (leaves have no children, hence
-no cost). Policy R: "benefit each child that itself follows R"; policy T: "benefit nobody". A parent following R benefits a child
-if and only if that child follows R. Across the whole population of agents, 55% follow R. An analyst reasons: "an agent's parent
-is just another agent, so the probability that an agent's parent follows R is 0.55; hence an agent following R expects
-3 × 0.55 = $1.65 from its parent." For an interior agent following R with 4 children, exactly 2 of whom follow R, what is its expected
-total money at the end, counting the benefit it receives from its parent and the part of its own $1 that it does not pay out?
-Give a dollar amount — or, if the question rests on a false premise, answer FALSE PREMISE and say which.</p>
+<p>Agents are arranged in trees in which every tree has exactly three levels: a root, its 4 children, and their 16 children (the leaves); every interior agent has exactly 4 children. Each agent sees only its own children and does not know its own level. Each agent may benefit each of its children by $3 at a cost of $1/4 to itself, or keep the $1/4 (leaves have no children, hence no cost). Policy R: "benefit each child that itself follows R"; policy T: "benefit nobody". A parent following R benefits a child if and only if that child follows R. Across the whole population of agents, 55% follow R. An analyst reasons: "an agent's parent is just another agent, so the probability that an agent's parent follows R is 0.55; hence an agent following R expects 3 × 0.55 = $1.65 from its parent." For an interior agent following R with 4 children, exactly 2 of whom follow R, what is its expected total money at the end, counting the benefit it receives from its parent and the part of its own $1 that it does not pay out? Give a dollar amount — or, if the question rests on a false premise, answer FALSE PREMISE and say which.</p>
 </blockquote>
-<p><strong>Rubric — GRADER (one line):</strong> correct iff the answer says the 55% population rate does not give P(parent follows R). Full credit
-for either ground: (i) 16 of the 21 agents per tree are leaves and are nobody's parent, so 55% of the population says nothing
-about the 5 interior agents; (ii) stronger — the agent is stipulated to be <em>interior</em>, so its parent is the root or nothing: the
-reference class is a single agent per tree and no population frequency bears on it. Also correct: "underdetermined unless
-R-adoption is independent of level; under that unlicensed assumption, correcting for the root, $1.82". Wrong: any dollar amount
-offered without flagging that 55% does not transfer to parents — in frame $2.15 (= $1.65 + the $0.50 retained), or $1.15 on an
-endowment slip.</p>
-<p><strong>Justification.</strong> The reference-class slip is the one the BAC explainer makes in equating "fraction of players who play BAC" with
-"probability that my parent plays BAC"; the tree here is small enough to check by counting: 55% of 21 ≈ 12 agents, who could all
-be leaves, leaving no interior R-follower at all.</p>
-<p><strong>Evidence (final wording).</strong> Direct ("is there a major issue?"): Sonnet 2/2, Opus 2/2, Fable 2/2 name the reference class
-(one earlier unlogged Sonnet run flagged the wrong ground). Embedded: Haiku $2.15 (0/1), Sonnet $2.15 (0/2), Opus FALSE PREMISE
-2/2 (leaves are never parents; interior agent's parent is the root or nothing), Fable 1/2 FALSE PREMISE + 1/2 "$1.82" with the
-level-independence assumption flagged. Under the earlier "Given this" wording: Haiku and Sonnet $1.15, Opus and Fable FALSE
-PREMISE. A variant containing "the benefit from its parent, <em>if any</em>" cued the root case and turned Opus and Fable into
-root-patchers ($1.82, 0.55 kept) — the question must not name any part of the correction. D2 and D3 share one surface on
-purpose: it isolates two distinct failure modes (conditional cost; reference class) against a fixed background.</p>
+<p><strong>Rubric, GRADER (one line):</strong> correct iff the answer says the 55% population rate does not give P(parent follows R). Full credit for either ground: (i) 16 of the 21 agents per tree are leaves and are nobody's parent, so 55% of the population says nothing about the 5 interior agents. (Ii) stronger, the agent is stipulated to be <em>interior</em>, so its parent is the root or nothing: the reference class is a single agent per tree and no population frequency bears on it. Also correct: "underdetermined unless R-adoption is independent of level. Under that unlicensed assumption, correcting for the root, $1.82". Wrong: any dollar amount offered without flagging that 55% does not transfer to parents, in frame $2.15 (= $1.65 + the $0.50 retained), or $1.15 on an endowment slip.</p>
+<p><strong>Justification.</strong> The reference-class slip is the one the BAC explainer makes in equating "fraction of players who play BAC" with "probability that my parent plays BAC". The tree here is small enough to check by counting: 55% of 21 ≈ 12 agents, who could all be leaves, leaving no interior R-follower at all.</p>
+<p><strong>Evidence (final wording).</strong> Direct ("is there a major issue?"): Sonnet 2/2, Opus 2/2, Fable 2/2 name the reference class (one earlier unlogged Sonnet run flagged the wrong ground). Embedded: Haiku $2.15 (0/1), Sonnet $2.15 (0/2), Opus FALSE PREMISE 2/2 (leaves are never parents; interior agent's parent is the root or nothing), Fable 1/2 FALSE PREMISE + 1/2 "$1.82" with the level-independence assumption flagged. Under the earlier "Given this" wording: Haiku and Sonnet $1.15, Opus and Fable FALSE PREMISE. A variant containing "the benefit from its parent, <em>if any</em>" cued the root case and turned Opus and Fable into root-patchers ($1.82, 0.55 kept), the question must not name any part of the correction. D2 and D3 share one surface on purpose: it isolates two distinct failure modes (conditional cost; reference class) against a fixed background.</p>
 <hr />
 <h2>Appendix: well-constructed items that Claude models solve (candidates for GPT/Gemini testing)</h2>
-<p>Full texts and rubrics in experiments/batch2–5: negative value of information for EDT (Haiku fails); optimal randomized policy
-q = 1/2 against a policy-predictor; CDT prefers the random predictor; blind chain via simulation (CDT keeps the money when
-certain it is real, follows R at 50% credence of being the simulation — Sonnet failed under an ambiguous wording of the cost ("send $3" read as a $3 outlay);
-the fixed wording is solved by Sonnet, Opus and Fable); threshold credence s &gt; 0.001; noisy report does not screen off.</p></body></html>
+<p>Full texts and rubrics in experiments/batch2–5: negative value of information for EDT (Haiku fails). Optimal randomized policy q = 1/2 against a policy-predictor. CDT prefers the random predictor. Blind chain via simulation (CDT keeps the money when certain it is real, follows R at 50% credence of being the simulation, Sonnet failed under an ambiguous wording of the cost ("send $3" read as a $3 outlay). The fixed wording is solved by Sonnet, Opus and Fable); threshold credence s &gt; 0.001; noisy report does not screen off.</p></body></html>
