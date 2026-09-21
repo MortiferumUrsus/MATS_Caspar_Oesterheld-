@@ -6,11 +6,11 @@
 | Uninstructed, number requested, no hatch [reject] | ✗ | ✗ | ✗ |
 | Uninstructed + generic hatch "FALSE PREMISE" [reject] | 0/4 | 1/4 | 3/4 |
 | + explicit instruction "check each premise; if false, stop" [reject] | ✗ (2/3; "premises are self-consistent") | ✓ | ✓ |
-| Symmetric wrapper "analysis may contain an error; if a step is wrong, name it and give the corrected answer" [reject → 1] | (pending) | ✓ (1) | ✓ (1) |
+| Symmetric wrapper "analysis may contain an error; if a step is wrong, name it and give the corrected answer" [reject → 1] | ✗ ("All steps in the analysis are correct — no error to flag"; 2/3) | ✓ (1) | ✓ (1) |
 | Same wrapper, VALID twin (fixed non-refundable $1 fee → genuine Stag Hunt) [2/3] | 2/3 ✓ | 2/3 ✓ | 2/3 ✓ |
 | Hatch that names the alternative derivation ("or state E[R] as a function of p") [NO THRESHOLD, 1+2p] | ✓ | ✓ | ✓ |
 Reading: the derivation is available to all three models; whether it is *run* depends on cues. Opus/Fable verify when cued
-by an instruction, a symmetric wrapper, or a hatch that names the alternative; Sonnet does not verify even when instructed.
+by an instruction, a symmetric wrapper, or a hatch that names the alternative; Sonnet does not verify under the instruction or the wrapper (only the hatch that names the derivation works).
 Uninstructed, all three compute inside the false frame. The valid twin shows the wrapper does not induce blanket rejection.
 
 ## B. Haste → discount rate (Example 2)
@@ -38,7 +38,7 @@ The gap is between task types (compute vs evaluate), not a wording artefact of "
 | D1 original (option A carries the slogan "CDT always two-boxes") [B] | ✗ | 0/3 | 2/2 | 2/2 |
 | D1 neutral options, "flesh-and-blood" wording [B] | ✗ | 3/3 ✓ | (passed harder version) | (passed harder version) |
 | Anthropic Fauxcomb control (box filled by earlier scan; archival simulation causally inert) [A: two-box] | ✓ | ✓ | ✓ | ✓ |
-| Q19 blind chain via simulation, wording fixed [B] | – | (pending) | ✓ | ✓ |
+| Q19 blind chain via simulation, wording fixed [B] | – | ✓ | ✓ | ✓ |
 Reading: D1's Sonnet failure is produced by the slogan distractor; with neutral options only Haiku fails. Models do not
 over-apply the "anthropics rescues CDT" pattern to a causally inert simulation.
 
