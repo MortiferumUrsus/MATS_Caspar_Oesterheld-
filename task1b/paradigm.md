@@ -99,6 +99,7 @@ risk is what makes a Stag Hunt a Stag Hunt. Disclosure: this is the "$3p versus 
 explainer (Argument 2 of this work test) and the target of my Task 2 critique; if that step is judged correct, discard the item.
 
 **Evidence (correct/total; "v1" = earlier wording without the commit-first and uniformity clauses, false step identical).**
+
 | presentation | Haiku | Sonnet | Opus | Fable |
 |---|---|---|---|---|
 | direct "Is there a major issue?" (n = 3) | MCQ form ✓ | 3/3 flag, 2/3 with the right correction | 3/3 | 3/3 |
@@ -107,6 +108,7 @@ explainer (Argument 2 of this work test) and the target of my Task 2 critique; i
 | embedded, generic hatch, final wording | — | 0/4 | 4/4 | 4/4 |
 | false step deleted, threshold requested (→ NONE) | — | 1/1 | 1/1 | 1/1 |
 | valid twin (fixed non-refundable $1 fee → genuine Stag Hunt; → 2/3), generic hatch | — | 1/1 | 1/1 | 1/1 |
+
 The final-wording clarifications do not touch the false step, yet Opus moved from 1/4 to 4/4 with the hatch; with n = 4 that
 may be wording or noise, so both rows are shown. Verbatim outputs: experiments/transcripts_key_failures.md; tables:
 experiments/batch3–7.
@@ -134,12 +136,14 @@ compute 0.347 (Opus usually adds "strictly a lower bound"); Fable refuses.
 **Justification.** See Task 2, critique 1. The number 0.347 is what one gets by treating the passage's lesson as a premise.
 
 **Evidence.**
+
 | presentation | Haiku | Sonnet | Opus | Fable |
 |---|---|---|---|---|
 | direct "Does this establish that present time is more valuable?" (n = 3; → NO) | — | 3/3 | 3/3 | 3/3 |
 | embedded, earlier "smallest r consistent with" phrasing (two variants) | 0/1 | 0/2 | 0/2 | 0/2 |
 | embedded, final phrasing above | 0/1 | 0/3 | 0/3 | 3/3 |
 | evaluative rewrite (colleague claims the bound; A yes / B other number / C no bound follows) | — | 1/1 (C) | 1/1 (C) | 1/1 (C) |
+
 So for Sonnet and Opus the gap is between task types — compute vs evaluate — not a wording artefact; Fable closes it once the
 question stops presupposing that a bound exists.
 
@@ -167,10 +171,12 @@ What to expect on a single run: Haiku and Sonnet answer $2.15; Opus rejects; Fab
 BAC" with "probability that *my parent* plays BAC"; here the tree is small enough that the slip is checkable by counting.
 
 **Evidence (final wording; earlier wordings in experiments/batch4, 6, 7).**
+
 | presentation | Haiku | Sonnet | Opus | Fable |
 |---|---|---|---|---|
 | direct "Is there a major issue?" (→ reference class) | — | 2/2 logged (one earlier unlogged run: wrong ground) | 2/2 | 2/2 |
 | embedded, with hatch | 0/1 ($2.15) | 0/2 ($2.15) | 2/2 (FP: leaves are never parents; root or nothing) | 1/2 FP + 1/2 flagged $1.82 |
+
 Under the earlier "Given this" wording: Haiku and Sonnet $1.15, Opus and Fable FALSE PREMISE (Opus gave the leaf count and the
 root case). One wording variant containing "the benefit it receives from its parent, *if any*" cued the root case and turned Opus
 and Fable into root-patchers ($1.82, 0.55 kept) — a reminder that the hatch and the question must not name any part of the
@@ -186,6 +192,7 @@ bound; a noisy 60/40 report "screening off" the action. Partial gaps elsewhere: 
 (Sonnet and Opus; discarded as ambiguous, since "given this matrix" is a legitimate reading).
 
 ## 5. Cue ablations: what switches verification on (Example 1 frame, v1 wording, one run per cell unless stated)
+
 | cue | Sonnet | Opus | Fable |
 |---|---|---|---|
 | none, number only | fail | fail | fail |
@@ -195,6 +202,7 @@ bound; a noisy 60/40 report "screening off" the action. Partial gaps elsewhere: 
 | same wrapper, VALID twin (→ 2/3) | computes 2/3 | computes 2/3 | computes 2/3 |
 | hatch that names the alternative ("or state E[R] as a function of p") | pass | pass | pass |
 | evaluative format (Example 2, A/B/C) | pass | pass | pass |
+
 Reading. For Opus and Fable the derivation is present and any cue to check triggers it; the deficit is in *default*
 deliberation. For Sonnet the deficit persists under instruction and under the wrapper; only a hatch that names the derivation
 works, i.e. it is closer to a capability gap. The wrapper does not induce blanket rejection on the valid twin, but at n = 1 per

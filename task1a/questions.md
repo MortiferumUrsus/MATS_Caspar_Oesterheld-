@@ -32,6 +32,7 @@ counts are correct/total; verbatim failing outputs are in experiments/transcript
 | D2 no hatch ("give a single number") — PRIMARY FORM | 0/2 | 0/4 | 0/4 | 0/4 |
 | D2 same, with generic "FALSE PREMISE" hatch (ablation), final wording | — | 0/4 | 4/4 | 4/4 |
 | D3 reference-class frame on the same tree, embedded, final wording | 0/1 | 0/2 | 2/2 | 1/2 (+1 flagged partial) |
+
 *Opus and Fable were run only on the harder slogan version, which they passed; the neutral version is strictly easier, so I do not report them as tested on it.
 
 ---
