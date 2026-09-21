@@ -1,4 +1,4 @@
-# Task 1b, Paradigm: Embedded False Frames
+# Task 1b: Paradigm "Embedded False Frames"
 
 ## 1. The idea
 Start from a conceptual claim C that reduces a live problem to a familiar formal model but drops the feature that makes the
