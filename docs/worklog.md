@@ -7,3 +7,10 @@
 - 02:00–02:30 волна 3: встроенная ложная посылка (R1-P) — ошибаются все три модели; на хрестоматийных сюжетах — нет. Написаны обе критики Task 2.
 - 02:30–03:00 написаны task1b/paradigm.md, task1a/questions.md; запущены 4 критика.
 - 00:50–01:07 (реальное время; ранее я ошибался в оценке) — 4 критика вернули 5–7/10; проведены абляции (инструкция «проверь посылки», симметричная обёртка, валидный двойник, лазейка с формулой, оценочный формат A/B/C), контроль «анропический Fauxcomb», нейтральная D1; переписаны обе критики, 1a, 1b; сохранены стенограммы и отчёты критиков.
+
+## 01:20–02:10 MSK — round-2 edits and waves 6–8
+- Collected wave 6 (direct items n=3, Ex2/Ex3 new wordings, no-claim cell, valid twin under hatch); wrote batch6.
+- Wave 7/8: D2 final wording (uniformity + commit-first): no-hatch 0/8 across 4 models; hatch Sonnet 0/4, Opus 4/4, Fable 4/4.
+  D3 wording iterated 3× (found and removed an "if any" cue); final: Haiku/Sonnet in-frame, Opus 2/2 FP, Fable 1 FP + 1 flagged.
+  Ex2 final wording: Sonnet/Opus 0/3, Fable 3/3. Hit the account rate limit at ~01:55; remaining planned repeats not run.
+- Rewrote task1b/paradigm.md and task1a/questions.md per round-2 critics; logged round 2 in critic_reviews.md.
