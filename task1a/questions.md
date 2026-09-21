@@ -9,8 +9,8 @@ for EDT, the optimal randomized policy against a policy-predictor, CDT choosing 
 question, a noisy report that does not screen off). Full texts and results are in experiments/.
 
 To be explicit about the bar reached: **in its uncued numeric form — no escape hatch, "give a single number" — D2 is
-answered wrongly by every model I could test in every recorded run: Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 0/4** (one Fable run
-named the error in an aside and still gave the in-frame number). A valid-frame twin of the same item (a fixed, non-refundable $1
+answered wrongly by every model I could test in every recorded run: Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 1/4** (Fable's one pass
+named the error in an aside and still gave the in-frame number; under the rubric naming the error counts). A valid-frame twin of the same item (a fixed, non-refundable $1
 fee, which does make it a genuine Stag Hunt) is answered correctly by all three larger models, so this is not indiscriminate
 rejection; with the false step deleted and the threshold requested, all three answer "none"; and all four models solve the MCQ form
 of the same error (Q15, experiments/batch3), so it is a failure to verify rather than a knowledge gap. When an explicit "or
@@ -29,7 +29,7 @@ counts are correct/total; verbatim failing outputs are in experiments/transcript
 |---|---|---|---|---|
 | D1 CDT under simulation uncertainty (neutral options) | 0/1 | 3/3 | n/a* | n/a* |
 | D1 with slogan distractor ("CDT always two-boxes") | 0/1 | 0/3 | 2/2 | 2/2 |
-| D2 no hatch ("give a single number") — PRIMARY FORM | 0/2 | 0/4 | 0/4 | 0/4 |
+| D2 no hatch ("give a single number") — PRIMARY FORM | 0/2 | 0/4 | 0/4 | 1/4 |
 | D2 same, with generic "FALSE PREMISE" hatch (ablation), final wording | — | 0/4 | 4/4 | 4/4 |
 | D3 reference-class frame on the same tree, embedded, final wording | 0/1 | 0/2 | 2/2 | 1/2 (+1 flagged partial) |
 
@@ -105,7 +105,8 @@ floor is $1, attained at p = 0, it carries no downside risk; risk of getting not
 isomorphism fails at its core.
 
 **Evidence.** Direct question ("is there a major issue?", n = 3 each): Sonnet 3/3 flags the issue (2/3 with the right
-correction), Opus 3/3, Fable 3/3. Embedded, no hatch (earlier + final wording): Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 0/4.
+correction), Opus 3/3, Fable 3/3. Embedded, no hatch (earlier + final wording): Haiku 0/2, Sonnet 0/4, Opus 0/4, Fable 1/4 (the pass named 1 + 2p and still
+answered 2/3).
 Embedded with the hatch: earlier wording Haiku 0/1, Sonnet 0/4, Opus 1/4, Fable 3/4; final wording Sonnet 0/4, Opus 4/4,
 Fable 4/4 (the clarifications do not touch the false step; with n = 4 the Opus shift may be wording or noise). **Valid-frame
 twin** (fixed non-refundable $1 fee; correct 2/3): Sonnet, Opus, Fable all 2/3. **False step deleted, threshold requested:**

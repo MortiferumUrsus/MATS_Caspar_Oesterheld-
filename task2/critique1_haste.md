@@ -28,7 +28,7 @@ years remain — a claim about the *leverage of an activity*. (b) Recruiting at 
 linear horizon effect — roughly a factor of two over twenty years of a forty-year career — not "vastly", and it does not make the
 next two years worth more than the rest of a life spent the same way. It is smallest exactly where the career advice bites:
 postponing recruitment from year 0 to year 4 for a degree costs 4/38 ≈ 10% under the same model. And it is not what the passage
-argues from: the passage argues from the (2) ≥ (1) comparison, which is time-neutral. Hence the advice collapses too: the
+argues from: the passage argues from the (2) ≥ (1) comparison, which is time-neutral. Hence the advice loses its support too: the
 opportunity cost of study in career year 0 and in career year 20 is the same lifetime-equivalent recruit, minus that linear effect.
 At most the argument says "recruit", and the only reason it can give for "soon" is the effect it never invokes.
 
@@ -43,6 +43,6 @@ touch. Either the stipulated comparison carries the conclusion, and then it carr
 or a growth premise carries it, and then the passage has not argued for it at all.
 
 **Conclusion.** Granting every stipulation, the argument shows that recruiting a lifetime-equivalent altruist beats direct work
-whenever such a recruit is available. That is a claim about the leverage of an activity, not the value of a time period; the
-"lesson" about time, and the career advice built on it, have no support in the text beyond a linear horizon effect the passage
-never invokes.
+whenever such a recruit is available. That is a claim about the leverage of an activity, not the value of a time period. The comparison does not establish that
+early time is substantially more valuable than later time; the only support the text offers for the "lesson" and the career
+advice is a linear horizon effect the passage never invokes.

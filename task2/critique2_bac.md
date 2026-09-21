@@ -4,7 +4,7 @@
 the many-player continuous-payoff Stag Hunt" — does not follow from the explainer's own payoffs. The proof charges a BAC-follower the full $1 as if the
 cost of BAC were unconditional, but BAC is by definition a *conditional* policy: you send $3 only to children who themselves
 follow BAC, and keep $1/N for every child who does not. Once the cost is booked correctly, BAC does at least as well as "take the
-$1" at every p and strictly better at every p > 0, so there is no risk and hence no Stag Hunt — and with it goes the explainer's
+$1" at every p and strictly better at every p > 0, so, within the explainer's own single-p model, there is no risk and hence no Stag Hunt — and with it goes the explainer's
 account of *why and when* BAC is rational, which is what the preamble on salience, risk and the 100-hunter game was for.
 
 **The accounting.** Let a fraction p of players follow BAC among parents (the explainer's assumption); nothing in the model makes
