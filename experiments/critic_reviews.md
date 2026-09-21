@@ -45,7 +45,7 @@ cell. (7) Added verbatim transcripts (experiments/transcripts_key_failures.md).
 
 ---
 # Round 2 (fresh critic agents, after the round-1 rewrites)
-Scores: haste critique 7.5/10, BAC critique 7/10, Task 1b 6/10, Task 1a 6/10, SUMMARY_RU (reader check) 6/10.
+Scores: haste critique 7.5/10, BAC critique 7/10, Task 1b 6/10, Task 1a 6/10.
 
 ## Task 1b (6/10) — adopted
 - Thesis restated as task-type ("computation on top of an asserted C"), since the evaluative rewrite refutes "assertion alone".

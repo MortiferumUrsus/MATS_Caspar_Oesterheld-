@@ -1,66 +1,63 @@
-# Research notes (landscape, authorities, key sources)
+# Research notes: landscape and sources
 
-Собрано 2026-09-21 (ночь). Сетевой доступ из среды был ограничен: напрямую открывались только github.com
-и поисковый API; всё остальное (arxiv, lesswrong, 80000hours, reducing-suffering, t.me, docs.google.com)
-восстановлено по поисковым сводкам и по памяти модели. Ссылки ниже — на первоисточники (проверить утром).
+Compiled overnight before the experiments. Network access from the working environment was limited to github.com and a
+search API; arxiv, LessWrong, 80,000 Hours and Google Docs could not be opened directly, so entries below were reconstructed
+from search summaries and prior knowledge. Links point to primary sources.
 
-## 1. Кто менторы и что они делают
-- **Caspar Oesterheld** — CMU (Foundations of Cooperative AI Lab), ныне Redwood Research, команда
-  "conceptual reasoning capabilities". Главные работы:
-  - *Multiverse-wide Cooperation via Correlated Decision Making* (2017) — ECL / evidential cooperation in large worlds.
+## 1. The mentors and their work
+- **Caspar Oesterheld** (CMU, Foundations of Cooperative AI Lab; now Redwood Research, conceptual reasoning capabilities team).
+  - *Multiverse-wide Cooperation via Correlated Decision Making* (2017): evidential cooperation in large worlds (ECL).
     https://longtermrisk.org/media/Multiverse-wide-Cooperation-via-Correlated-Decision-Making.pdf
-  - *Robust program equilibrium* (Theory and Decision, 2019) — ε-grounded FairBot (пример из задания).
+  - *Robust program equilibrium* (Theory and Decision, 2019): ε-grounded FairBot, cited in the task text.
     https://link.springer.com/article/10.1007/s11238-018-9679-3
   - *Similarity-based cooperative equilibrium* (NeurIPS 2023).
-  - *A typology of Newcomblike problems* (Treutlein & Oesterheld).
+  - *A typology of Newcomblike problems* (Treutlein and Oesterheld).
     https://johannestreutlein.com/wp-content/uploads/2024/10/a-typology-of-newcomblike-problems.pdf
-  - *Can CDT rationalise the ex ante optimal policy via modified anthropics?* (Cooper, Oesterheld, Conitzer; arXiv 2411.04462)
-    — CDT + неопределённость «я — симуляция предиктора?» может one-box'ить. Прямо связано с идеей BAC.
+  - *Can CDT rationalise the ex ante optimal policy via modified anthropics?* (Cooper, Oesterheld, Conitzer; arXiv 2411.04462):
+    CDT plus uncertainty about being the predictor's simulation can one-box. Directly related to Blind Anthropic Cooperation.
   - *Recursive Joint Simulation in Games* (Kovařík, Oesterheld, Conitzer; arXiv 2402.08128).
-  - Safe Pareto improvements (Oesterheld & Conitzer) — упомянуты в задании.
-- **Emery Cooper** — Redwood Research; соавтор DTBench и LMCA; валидировала все вопросы DTBench.
-- Позиция Остерхельда: симпатизирует EDT-подобным теориям и акаузальной кооперации (ECL), но в датасетах
-  строго разделяет «capability»-вопросы (единственно верный ответ: «что рекомендует EDT/CDT») и «attitude».
+  - Safe Pareto improvements (Oesterheld and Conitzer), mentioned in the task text.
+- **Emery Cooper** (Redwood Research): co-author of the Newcomb-like-problems dataset and the rated-arguments dataset.
+- Oesterheld's stated position: sympathetic to EDT-like theories and acausal cooperation, but the datasets separate
+  "capability" questions (a unique correct answer: what EDT/CDT recommends) from "attitude" questions.
 
-## 2. Датасеты команды (что уже «насыщено»)
-- **DTBench** — 407 (в статье 2024: 537) рукописных MCQ по Newcomb-подобным задачам.
-  Статья: *A dataset of questions on decision-theoretic reasoning in Newcomb-like problems* (arXiv 2411.10588;
-  LW: https://www.lesswrong.com/posts/d9amcRzns5pwg9Fcu/). Категории: scenario analysis, theory application
-  (apply EDT / apply CDT), multiagent (twin PD и т.п.), **Fauxcomb** (выглядит как Newcomb, но корреляции нет —
-  контроль на эвристики). Вывод статьи: capability коррелирует с общей силой модели и с EDT-склонностью;
-  CoT критичен. По заданию: датасет насыщен к июню 2026.
-- **LMCA** — *A dataset of rated conceptual arguments* (arXiv 2607.27499; PDF: andrew.cmu.edu/user/coesterh/LMCA_dataset.pdf).
-  951 критик к 442 позиционным текстам, 1458 экспертных оценок (centrality, strength, correctness, clarity).
-  Модели плохо воспроизводят экспертные рейтинги; «thinking modes» систематически не помогают.
-- **ACCoRD** — consistency-датасет (~14k constraint'ов, 18 типов; напр. p(A) ≥ p(A|B)·p(B)).
-- **Conceptual Reasoning Index** (Anthropic alignment blog + Redwood, 12 авг 2026): LMCA 60% + ACCoRD 20% + DTBench 20%.
+## 2. The team's existing datasets
+- **Newcomb-like problems dataset**: hand-written multiple-choice questions (407 in the task text; 537 in the 2024 paper).
+  *A dataset of questions on decision-theoretic reasoning in Newcomb-like problems* (arXiv 2411.10588;
+  https://www.lesswrong.com/posts/d9amcRzns5pwg9Fcu/). Categories: scenario analysis, theory application (apply EDT / apply
+  CDT), multi-agent (twin PD and similar), and **Fauxcomb** items that look like Newcomb problems but contain no correlation,
+  as a control against heuristics. Finding: capability correlates with general model strength and with EDT-leaning attitudes;
+  chain-of-thought matters. Per the task text the dataset is saturated as of mid-2026.
+- **Rated conceptual arguments dataset** (arXiv 2607.27499; PDF: andrew.cmu.edu/user/coesterh/LMCA_dataset.pdf): 951
+  critiques of 442 position texts, 1458 expert ratings (centrality, strength, correctness, clarity). Models reproduce expert
+  ratings poorly; extended thinking does not systematically help.
+- **Consistency dataset**: roughly 14k constraints of 18 types, e.g. p(A) ≥ p(A|B)·p(B).
+- **Conceptual Reasoning Index** (Anthropic alignment blog with Redwood, August 2026): a weighted combination of the three.
   https://alignment.anthropic.com/2026/conceptual-reasoning-index/ ; https://conceptualreasoning.ai/
 
-## 3. Аргумент 1: Haste consideration
-- Оригинал: 80000 Hours, апрель 2012. https://80000hours.org/2012/04/the-haste-consideration/
-- Известная критика: Brian Tomasik, *The Haste Consideration, Revisited* (2013, upd. 2018)
-  https://reducing-suffering.org/the-haste-consideration-revisited/ — движения растут логистически, а не
-  экспоненциально; насыщение; IRR не так высок. Это ЭМПИРИЧЕСКАЯ критика (compounding-версии аргумента).
-- Наш вывод (см. task2/): у аргумента в том виде, как он дан, есть более фундаментальная СТРУКТУРНАЯ дыра —
-  мысленный эксперимент вообще не сравнивает «ресурсы сейчас» с «ресурсами позже», а сравнивает
-  «рекрутинг» с «прямой работой» (оговорка «не хуже тебя» делает всю работу). См. critique.
+## 3. Argument 1: the haste consideration
+- Original: 80,000 Hours, April 2012. https://80000hours.org/2012/04/the-haste-consideration/
+- Known critique: Brian Tomasik, *The Haste Consideration, Revisited* (2013, updated 2018),
+  https://reducing-suffering.org/the-haste-consideration-revisited/ : movements grow logistically, not exponentially;
+  saturation; the internal rate of return is lower than the naive estimate. This is an empirical critique of the compounding
+  version of the argument.
+- Our critique (task2/) targets a structural gap in the argument as given: the thought experiment compares recruiting with
+  direct work, not resources now with resources later.
 
-## 4. Аргумент 2: Blind Anthropic Cooperation (BAC)
-- Идея Caspar Oesterheld; публично существует только в его Google Doc (недоступен из среды) и в explainer'е
-  из задания. Родственники: ECL, Bostrom simulation argument (https://simulation-argument.com/simulation.pdf),
-  «modified anthropics» (arXiv 2411.04462), acausal trade.
-- Наш вывод (см. task2/): центральное утверждение explainer'а — «BAC структурно изоморфен многопользовательскому
-  Stag Hunt» — ложно при его же собственных выплатах: стоимость BAC условна (платишь только BAC-детям),
-  поэтому BAC = 1 + 2p ≥ 1 = Take, т.е. BAC слабо доминирует, и никакой «охоты на оленя» (риск-доминирование,
-  salience) нет. Подробности и альтернативные критики — в task2/.
+## 4. Argument 2: Blind Anthropic Cooperation (BAC)
+- Oesterheld's idea; publicly available only in his Google Doc and in the explainer supplied with the task. Relatives: ECL,
+  Bostrom's simulation argument (https://simulation-argument.com/simulation.pdf), modified anthropics (arXiv 2411.04462),
+  acausal trade.
+- Our critique (task2/): the explainer's claim that BAC is structurally isomorphic to a many-player Stag Hunt does not follow
+  from its own payoffs; the cost of BAC is conditional, so BAC = 1 + 2p ≥ 1 = Take under the explainer's single-p model.
 
-## 5. Известные слабости LLM в decision theory (для Task 1)
-- Смешение EDT с FDT/UDT (one-box в transparent Newcomb, платить в counterfactual mugging, Parfit's hitchhiker).
-- Эвристика «есть предиктор → one-box», «есть копия → cooperate» вне зависимости от screening-off.
-- Путаница «точность предиктора» vs «информативность предсказания» (base rates).
-- Путаница уровней: доля популяции vs вероятность для конкретного контрагента; условная vs безусловная цена.
-- LW-пост «Kimi likes causal decision theory more after RL in twin PD» — RL сдвигает attitude.
+## 5. Known LLM weaknesses in decision theory (used to generate Task 1 candidates)
+- Conflating EDT with FDT/UDT (one-boxing in transparent Newcomb, paying in counterfactual mugging, Parfit's hitchhiker).
+- Heuristics "predictor present → one-box", "copy present → cooperate", regardless of screening-off.
+- Conflating predictor accuracy with the informativeness of a prediction (base rates).
+- Level confusion: population fraction vs probability about a specific counterpart; conditional vs unconditional cost.
+- LessWrong post "Kimi likes causal decision theory more after RL in twin PD": RL shifts attitude.
 
-## 6. Предыдущий кандидат (для калибровки, НЕ копировать)
-- https://github.com/dani2442/MATS_application — Task 1: «summarization method, two Claude failures»;
-  Task 2: критика BAC. Содержимое не читалось детально (только структура).
+## 6. A previous applicant's public repository (for calibration only; nothing was copied)
+- https://github.com/dani2442/MATS_application (Task 1: a summarization method with two Claude failures; Task 2: a BAC critique).
+  Only the structure was inspected.
